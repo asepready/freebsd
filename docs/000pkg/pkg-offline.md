@@ -29,6 +29,6 @@ pkg update
 ```
 - download paket aplikasi/game
 ```sh
-pkg fetch   -d -o  /root/off-pac   vlc
+pkg fetch -d -o  /root/off-pac   vlc
 ```
 4. Sebuah media penyimpanan untuk mentransfer paket dari mesin/PC sumber ke mesin/PC yang lain.
