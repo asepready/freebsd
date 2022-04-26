@@ -2,7 +2,20 @@
 <img src="/assets/images/logo.png" alt="Logo" style="width:200px;"/>
 </p>
 
-## Catatan hasil belajar FreeBSD support versi =>11.* sebagai Workstation
+## Catatan hasil belajar FreeBSD support versi =>11.*
+#### Cek Version dan Update FreeBSD
+Cek Versi mesin/PC FreeBSD
+```sh
+freebsd-version
+```
+Update Versi mesin/PC FreeBSD
+```sh
+freebsd-update fetch install
+```
+Jika diperlukan upgrade versi mesin/PC dan paket FreeBSD
+```sh
+pkg update && pkg upgrade -y
+```
 #### Sunber Belajar
 1. [Downloading FreeBSD packages for offline installation | ](https://kgibran.wordpress.com/2016/01/12/downloading-freebsd-packages-for-offline-installation/)(https://kgibran.wordpress.com/2016/01/12/downloading-freebsd-packages-for-offline-installation/)
 #### Struktur Folder
