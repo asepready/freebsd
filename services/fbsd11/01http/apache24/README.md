@@ -10,7 +10,7 @@ ee /etc/rc.conf
 ```sh
 #/etc/rc.conf
 #Apache24
-apache24_enable=”YES”
+apache24_enable="YES"
 #apache24_http_accept_enable=”YES”
 ```
 2. Buka dan Edit file di /usr/local/etc/apache24/httpd.conf
