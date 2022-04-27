@@ -7,3 +7,5 @@
 #### Struktur Folder
 ```sh
 ```
+## Sumber belajar
+1. [Domain Name System (DNS) | ](https://docs.freebsd.org/en/books/handbook/network-servers/#network-dns)(https://docs.freebsd.org/en/books/handbook/network-servers/#network-dns)
