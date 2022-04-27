@@ -34,3 +34,7 @@ ServerAdmin you@example.com
 #
 ServerName webserverbsd.net:80
 ```
+3. Menjalankan Apache24 Service & Status
+```sh
+service apache24 start
+```
