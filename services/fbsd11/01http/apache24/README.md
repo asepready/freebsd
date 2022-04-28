@@ -23,7 +23,7 @@ ee /usr/local/etc/apache24/httpd.conf
 # e-mailed.  This address appears on some server-generated pages, such
 # as error documents.  e.g. admin@your-domain.com
 #
-ServerAdmin you@example.com
+ServerAdmin bsd@webserverbsd
 
 #
 # ServerName gives the name and port that the server uses to identify itself.

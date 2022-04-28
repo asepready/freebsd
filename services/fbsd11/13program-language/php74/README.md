@@ -1,63 +1,68 @@
-## PHP74 + Apache24(mod_php74)
-1. Buka dan Edit file di /usr/local/etc/apache24/httpd.conf
-  ```sh
-  ee /usr/local/etc/apache24/httpd.conf
-  ```
-
-  ```sh
-  # Step 1 added
-  LoadModule rewrite_module libexec/apache24/mod_rewrite.so
-  LoadModule php7_module        libexec/apache24/libphp7.so
-
-  # Step 2 added
-  # DirectoryIndex: sets the file that Apache will serve if a directory
-  # is requested.
-  #
-  <IfModule dir_module>
-      DirectoryIndex index.php index.html
-  </IfModule>
-
-  # Step 3 added
-  # AddType allows you to add to or override the MIME configuration
-  # file specified in TypesConfig for specific file types.
-  #
-  #AddType application/x-gzip .tgz
-  #
-  # AddEncoding allows you to have certain browsers uncompress
-  # information on the fly. Note: Not all browsers support this.
-  #
-  #AddEncoding x-compress .Z
-  #AddEncoding x-gzip .gz .tgz
-  #
-  # If the AddEncoding directives above are commented-out, then you
-  # probably should define those extensions to indicate media types:
-  #
-  AddType application/x-compress .Z
-  AddType application/x-gzip .gz .tgz
-  AddType application/x-httpd-php .php
-  AddType application/x-httpd-php-source .phps
-  ```
-2. Buat file phpinfo.php di /usr/local/www/apache24/data/phpinfo.php
+## Buka dan Edit file /usr/local/etc/php-fpm.d/www.conf
 ```sh
-ee /usr/local/www/apache24/data/phpinfo.php
+ee /usr/local/etc/php-fpm.d/www.conf
 ```
+1. cari baris:
 ```sh
-<?php phpinfo();
+listen = 127.0.0.1:9000
 ```
-3. Salin file php.ini-production di /usr/local/etc/php.ini-production menjadi salinan php.ini
+rubah menjadi:
 ```sh
-cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
-```
-4. Konfigurasi dasar file php.ini
-```sh
-ee /usr/local/etc/php.ini
+listen = /var/run/php74-fpm.sock
 ```
 
+3. Hilangkan koment pada baris:
 ```sh
-[Date]
-date.timezone = Asia/Jakarta
+listen.owner = www
+listen.group = www
+listen.mode = 0660
+```
 
-[Session]
-session.save_handler = files
-session.save_path = "/tmp"
+Enable PHP start up
+```sh
+sysrc php_fpm_enable=yes
+```
+
+## Perintah menjalankan service PHP-FPM
+```sh
+service php-fpm stop
+service php-fpm start
+service php-fpm restart
+service php-fpm status
+```
+
+## PHP74 salin php.ini
+```sh
+cd /usr/local/etc/
+cp -v /usr/local/etc/php.ini-production /usr/local/etc/php.ini
+```
+## Enabling Service and Setting Up a Firewall with IPFW
+```sh
+grep rcvar /usr/local/etc/rc.d/*
+```
+
+## Buat dan buka untuk WebServer Nginx
+```sh
+ee /usr/local/etc/php/99-custom.ini
+```
+```sh
+display_errors=Off
+safe_mode=Off
+safe_mode_exec_dir=
+safe_mode_allowed_env_vars=PHP_
+expose_php=Off
+log_errors=On
+error_log=/var/log/nginx/php.scripts.log
+register_globals=Off
+cgi.force_redirect=0
+file_uploads=On
+allow_url_fopen=Off
+sql.safe_mode=Off
+disable_functions=show_source, system, shell_exec, passthru, proc_open, proc_nice, exec
+max_execution_time=60
+memory_limit=60M
+upload_max_filesize=2M
+post_max_size=2M
+cgi.fix_pathinfo=0
+sendmail_path=/usr/sbin/sendmail -fwebmaster@cyberciti.biz -t
 ```

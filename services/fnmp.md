@@ -1,7 +1,7 @@
 <p align="center">
 <img src="/assets/images/logo.png" alt="Logo" style="width:200px;"/>
-<h1>FAMP</h1>
-<h1>FreeBSD.Apache.MariaDB.PHP</h1>
+<h1>FNMP</h1>
+<h1>FreeBSD.Nginx.MariaDB.PHP</h1>
 </p>
 
 ## Catatan hasil belajar FreeBSD support versi =>11.* sebagai Server
@@ -15,7 +15,7 @@ belajar-freebsd/docs/000pkg/
 
 # 2 Install paket FAMP
 belajar-freebsd/docs/fbsd11/services/01http/
-├── apache24.md
+├── nginx-1.20.md
 └── README.md
 belajar-freebsd/docs/fbsd11/services/13program-language/
 ├── php74.md
@@ -65,37 +65,30 @@ belajar-freebsd/services/fbsd11/14dbms/mariadb103/
         └── etc
             └── my.cnf
 ```
+#### Cek paket terinstall melalui pkg
+```sh
+pkg search php74 | grep gd
+pkg search php74 | egrep -i --color 'gd|mysqli|openssl'
+pkg search php74 | egrep --color -i -- '-(gd|mysqli|openssl|memcached|opcache|json|mbstring|imagick|xml|zip|composer|igbinary)-'
+```
+
 #### Install phpMyAdmin-php74
 ```sh
+pkg ins php74-composer php74-gd php74-mysqli php74-json php74-mbstring php74-session php74-hash php74-extensions
 pkg ins phpMyAdmin-php74
 ```
-1. buka file /usr/local/etc/apache24/httpd.conf dan edit:
-  ```sh
-  ee /usr/local/etc/apache24/httpd.conf
-  ```
-
-  ```sh
-  Include etc/apache24/Includes/*.conf
-  
-  Alias /phpmyadmin/ "/usr/local/www/phpMyAdmin/"
-
-  <Directory "/usr/local/www/phpMyAdmin/">
-  Options None
-  AllowOverride Limit
-
-  Require local
-    Require host webserverbsd.net
-  </Directory>
-  ```
-2. Salin file /usr/local/www/phpMyAdmin/config.sample.inc.php menjadi config.inc.php
+2. Salin file config.sample.inc.php menjadi config.inc.php pada /usr/local/www/phpMyAdmin
 ```sh
-cp /usr/local/www/phpMyAdmin/config.sample.inc.php /usr/local/www/phpMyAdmin/config.inc.php
+cd /usr/local/www/phpMyAdmin/
+cp /usr/local/www/phpMyAdmin/config{.sample,}.inc.php
 ```
-3. Edit file /usr/local/www/phpMyAdmin/config.inc.php
-```sh
-ee /usr/local/www/phpMyAdmin/config.inc.php
-```
+edit baris pada /usr/local/www/phpMyAdmin/config.inc.php
 ```sh
 $cfg['blowfish_secret'] = ''
+# menjadi
 $cfg['blowfish_secret'] = 'Ey0r*h!5g#oNf5WvkosW)*H$jasn%$!1'
+```
+3. Buat simbolik link
+```sh
+ln -s /usr/local/www/phpMyAdmin/ /usr/local/www/nginx-dist/phpmyadmin
 ```

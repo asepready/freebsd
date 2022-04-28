@@ -12,7 +12,7 @@ mysql_enable="YES"
 ```
 2. Salin file my-small.cnf di /usr/local/share/mysql/my-small.cnf menjadi salinan my.cnf
 ```sh
-cp /usr/local/share/mysql/my-small.cnf /usr/local/etc/my.cnf
+cp /usr/local/etc/my.cnf{.sample}
 ```
 3. Menjalankan MariaDB Service & Status
 ```sh
