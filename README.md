@@ -1,5 +1,5 @@
 <p align="center">
-<img src="/assets/images/logo.png" alt="FreeBSD Logo" style="width:200px;"/>
+<img src="/assets/images/logo.png" alt="FreeBSD Logo" style="width:500px;"/>
 </p>
 
 ## Catatan hasil belajar FreeBSD support versi =>11.*
