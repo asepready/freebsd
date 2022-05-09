@@ -76,7 +76,7 @@ pkg ins phpMyAdmin-php74
 
   ```sh
   Include etc/apache24/Includes/*.conf
-  
+
   Alias /phpmyadmin/ "/usr/local/www/phpMyAdmin/"
 
   <Directory "/usr/local/www/phpMyAdmin/">
@@ -97,5 +97,10 @@ ee /usr/local/www/phpMyAdmin/config.inc.php
 ```
 ```sh
 $cfg['blowfish_secret'] = ''
+# tambahan kunci sacara acak yang susah ditebak
 $cfg['blowfish_secret'] = 'Ey0r*h!5g#oNf5WvkosW)*H$jasn%$!1'
 ```
+
+#### Sumber belajar
+0. [FreeBSD Handbook](https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache)(https://docs.freebsd.org/en/books/handbook/network-servers/#network-apache)
+1. [FAMP | Belajar FreeBSD repo Indonesia](http://repo.belajarfreebsd.or.id/Ebook/FAMP)(http://repo.belajarfreebsd.or.id/Ebook/FAMP%20(FreeBSD-Apache-MariaDB-PHP).pdf)
