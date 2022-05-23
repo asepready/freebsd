@@ -16,6 +16,15 @@ Jika diperlukan upgrade versi mesin/PC dan paket FreeBSD
 ```sh
 pkg update && pkg upgrade -y
 ```
+## Menyelesaikan masalah pada pkg-install melalui ports
+```sh
+pkg delete -f pkg && cd /usr/ports/ports-mgmt/pkg && make install clean
+```
+atau
+```sh
+ cd /usr/ports/ports-mgmt/pkg && make reinstall clean
+```
+
 #### Sunber Belajar
 1. [Downloading FreeBSD packages for offline installation | ](https://kgibran.wordpress.com/2016/01/12/downloading-freebsd-packages-for-offline-installation/)(https://kgibran.wordpress.com/2016/01/12/downloading-freebsd-packages-for-offline-installation/)
 #### Struktur Folder
