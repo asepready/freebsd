@@ -26,6 +26,7 @@ atau
 ```
 
 #### Sunber Belajar
+1. [Installing Applications: Packages and Ports](https://docs.freebsd.org/en/books/handbook/ports/)
 1. [Downloading FreeBSD packages for offline installation | ](https://kgibran.wordpress.com/2016/01/12/downloading-freebsd-packages-for-offline-installation/)(https://kgibran.wordpress.com/2016/01/12/downloading-freebsd-packages-for-offline-installation/)
 #### Struktur Folder
 ```sh
