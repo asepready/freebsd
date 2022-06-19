@@ -2,7 +2,7 @@
 <img src="/assets/images/logo.png" alt="Logo" style="width:200px;"/>
 </p>
 
-# Memasang paket melalui [Packages(pkg)](./docs/collection-apps/packages.md) atau Ports
+# Memasang paket melalui [Packages(pkg)](/docs/collection-apps/packages.md) atau Ports
 ## Catatan hasil belajar untuk FreeBSD support versi ==11.* ==> terbaru
 
 #### Cek Version dan Update FreeBSD
