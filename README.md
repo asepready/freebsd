@@ -146,4 +146,5 @@ belajar-freebsd/
 
 7. [Articles | FreeBSD Documentation ](https://docs.freebsd.org/en/articles/)(https://docs.freebsd.org/en/articles/)
 8. [FreeBSD Manual Pages | Check Packages ](https://www.freebsd.org/cgi/man.cgi)(https://www.freebsd.org/cgi/man.cgi)
-9. [Belajar FreeBSD repo Indonesia ](http://repo.belajarfreebsd.or.id/)(http://repo.belajarfreebsd.or.id/)
+9. [Belajar FreeBSD Repo Indonesia ](http://repo.belajarfreebsd.or.id/)(http://repo.belajarfreebsd.or.id/)
+10. [FreeBSD Repo ](http://ftp-archive.freebsd.org/)(http://ftp-archive.freebsd.org/)
