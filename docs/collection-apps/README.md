@@ -4,13 +4,11 @@
 
 # Memasang paket melalui [Packages(pkg)](/docs/collection-apps/packages.md) atau Ports
 ## Catatan hasil belajar untuk FreeBSD support versi ==11.* ==> terbaru
-
-#### Cek Version dan Update FreeBSD
-Cek Versi mesin/PC FreeBSD
+Cek versi mesin/PC FreeBSD
 ```sh
 freebsd-version
 ```
-Update Versi mesin/PC FreeBSD
+Update versi mesin/PC FreeBSD
 ```sh
 freebsd-update fetch
 freebsd-update install

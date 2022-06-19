@@ -2,14 +2,12 @@
 <img src="/assets/images/logo.png" alt="Logo" style="width:200px;"/>
 </p>
 
-## Memasang paket melalui Packages(pkg) catatan hasil belajar FreeBSD support versi terbaru/versi belum EOL
-
-#### Cek Version dan Update FreeBSD
-Cek Versi mesin/PC FreeBSD
+## Memasang paket melalui Packages(pkg) catatan hasil belajar FreeBSD support versi terbaru atau belum EOL
+Cek versi mesin/PC FreeBSD
 ```sh
 freebsd-version
 ```
-Update Versi mesin/PC FreeBSD
+Update versi mesin/PC FreeBSD
 ```sh
 freebsd-update fetch
 freebsd-update install
