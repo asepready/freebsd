@@ -10,12 +10,13 @@ freebsd-version
 freebsd-update fetch
 Update versi mesin/PC FreeBSD
 ```sh
+freebsd-update -r 12.3-RELEASE upgrade
 freebsd-update install
 ```
 ## Menginstal melalui portsnap/ports
 Jika diperlukan upgrade versi mesin/PC dan paket FreeBSD
 ```sh
-
+portsnap fetch update
 ```
 install paket:
 ```sh
