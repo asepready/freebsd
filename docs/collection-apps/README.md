@@ -18,3 +18,4 @@ freebsd-update install
 2. [Installing Applications: Packages and Ports](https://docs.freebsd.org/en/books/handbook/ports/)
 3. [Using Git to manage ports, source and documentation](https://forums.freebsd.org/threads/guide-using-git-to-manage-ports-source-and-documentation.79721/)
 4. [FreeBSD Git repositories](https://cgit.freebsd.org/)
+5. [Repo FreeBSD Packages](http://ftp2.freebsd.org/)(http://ftp2.freebsd.org/)
