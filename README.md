@@ -17,5 +17,6 @@
 6. [FreeBSD Documentation Project Primer for New Contributors ](https://docs.freebsd.org/en/books/fdp-primer/)(https://docs.freebsd.org/en/books/fdp-primer/)
 7. [Articles | FreeBSD Documentation ](https://docs.freebsd.org/en/articles/)(https://docs.freebsd.org/en/articles/)
 8. [FreeBSD Manual Pages | Check Packages ](https://www.freebsd.org/cgi/man.cgi)(https://www.freebsd.org/cgi/man.cgi)
-9. [Belajar FreeBSD Repo Indonesia ](http://repo.belajarfreebsd.or.id/)(http://repo.belajarfreebsd.or.id/)
-10. [FreeBSD Repo ](http://ftp-archive.freebsd.org/)(http://ftp-archive.freebsd.org/)
+9. [Repo Belajar FreeBSD  Indonesia ](http://repo.belajarfreebsd.or.id/)(http://repo.belajarfreebsd.or.id/)
+10. [FreeBSD Repo ](http://ftp2.freebsd.org/)(http://ftp.freebsd.org/)
+11. [CoreBSD Indonesia](http://www.corebsd.or.id/)(http://www.corebsd.or.id/)
