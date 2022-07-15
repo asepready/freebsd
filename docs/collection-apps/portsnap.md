@@ -27,3 +27,4 @@ cd /usr/ports/devel/git && make install clean
 1. [Using the Ports Collection](https://docs.freebsd.org/en/books/handbook/ports/#ports-using)
 2. [Using Git to manage ports, source and documentation](https://forums.freebsd.org/threads/guide-using-git-to-manage-ports-source-and-documentation.79721/)
 3. [FreeBSD Git repositories](https://cgit.freebsd.org/)
+4. [Repo FreeBSD Packages](http://ftp2.freebsd.org/)(http://ftp2.freebsd.org/)
