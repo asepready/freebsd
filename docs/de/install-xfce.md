@@ -1,3 +1,6 @@
+## Sumber Belajar
+[The FreeBSD Xfce Project](https://people.freebsd.org/~olivierd/xfce-faq.html)(https://people.freebsd.org/~olivierd/xfce-faq.html)
+## Pemasangan dan Konfigurasi
 1. Installing the X Window System:
 ```sh
 pkg install xorg
