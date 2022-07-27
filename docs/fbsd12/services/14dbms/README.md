@@ -3,7 +3,3 @@
 </p>
 
 ## Catatan hasil belajar FreeBSD support versi =>11.* jalankan service DBMS(MariaDB, Mysql dll)
-
-#### Struktur Folder
-```sh
-```

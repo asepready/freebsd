@@ -13,12 +13,12 @@ pkg update
 ```
 - cari Paket Mysql
 ```sh
-pkg sea mysql57-server
+pkg sea mysql57-server mysql57-client
 ```
 - download atau install lewat internet paket aplikasi/game
 Menginstall paket dari internet tanpa tersimpan di mesin/PC FreeBSD lokal.
 ```sh
-pkg ins mysql57-server
+pkg ins mysql57-server mysql57-client
 ```
 Mengunduh paket dari internet file unduh tersimpan di mesin/PC FreeBSD lokal
 ```sh

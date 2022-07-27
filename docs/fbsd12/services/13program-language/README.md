@@ -3,7 +3,3 @@
 </p>
 
 ## Catatan hasil belajar FreeBSD support versi =>11.* jalankan service bahasa program(PHP, Python dll)
-
-#### Struktur Folder
-```sh
-```

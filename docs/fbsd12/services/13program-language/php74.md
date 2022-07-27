@@ -15,13 +15,11 @@ Langkah-Langkahnya:
 
     Paket php74 + phpMyAdmin-php74 + apache24    
   ```sh
-  pkg sea php74
-  pkg sea mod_php74 #Modul Apache24(mod_php74)
+  pkg sea php74 php74-mysqli php74-extensions mod_php74 #Modul Apache24(mod_php74)
   ```
     Paket php74 + nginx    
   ```sh
-  pkg sea php74
-  pkg sea nginx-1.20
+  pkg sea php74 php74-mysqli php74-extensions nginx-1.20
   ```
   - download atau install lewat internet paket aplikasi/game
   Menginstall paket dari internet tanpa tersimpan di mesin/PC FreeBSD lokal.
