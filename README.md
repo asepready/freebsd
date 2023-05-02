@@ -4,6 +4,19 @@
 
 
 ## Catatan hasil belajar FreeBSD (All in One)
+
+Snapshots Backup/Restore(bectl/beadm)
+```
+bectl
+```
+Update Version FreeBSD
+```sh tem
+freebsd-update fetch #Fetch updates from server
+freebsd-update -r 13.2-RELEASE upgrade #Fetch upgrades to FreeBSD version specified via -r option
+
+freebsd-update install #Install downloaded updates or upgrades
+bsdinstall
+```
 1. Pembelajaran untuk kebutuhan sebagai Workstation
 2. Pembelajaran untuk kebutuhan sebagai Server
 3. Pembelajaran untuk kebutuhan sebagai Router
