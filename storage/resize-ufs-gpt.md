@@ -1,5 +1,5 @@
 <p align="center">
-<img src="./assets/images/logo.png" alt="Logo" style="width:200px;"/>
+<img src="./../assets/images/logo.png" alt="Logo" style="width:200px;"/>
 </p>
 
 https://www.vultr.com/docs/how-to-resize-a-disk-in-freebsd/

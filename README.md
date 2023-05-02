@@ -15,7 +15,10 @@ freebsd-update fetch #Fetch updates from server
 freebsd-update -r 13.2-RELEASE upgrade #Fetch upgrades to FreeBSD version specified via -r option
 
 freebsd-update install #Install downloaded updates or upgrades
+#or
 bsdinstall
+
+pkg upgrade
 ```
 1. Pembelajaran untuk kebutuhan sebagai Workstation
 2. Pembelajaran untuk kebutuhan sebagai Server
