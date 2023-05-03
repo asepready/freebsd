@@ -1,26 +1,24 @@
 <p align="center">
-<img src="./assets/images/logo.png" alt="Logo" style="width:200px;"/>
+<img src="./../assets/images/logo.png" alt="Logo" style="width:200px;"/>
 </p>
 
-https://www.vultr.com/docs/how-to-resize-a-disk-in-freebsd/
-
 ### Catatan hasil belajar FreeBSD support versi =>11.*
-## How to Resize a Disk in FreeBSD
-The FreeBSD operating system utilizes UFS (Unix File System) for its root partition's file system; otherwise known as `freebsd-ufs`
+## Cara Mengubah Ukuran Disk pada FreeBSD
+Sistem operasi FreeBSD menggunakan UFS (Unix File System) untuk sistem berkas pada partisi root; atau dikenal dengan nama `freebsd-ufs`.
 
-In the event of an upgraded disk size, we will illustrate how to expand this file system.
-### Prerequisites
+Jika ukuran disk ditingkatkan, kami akan mengilustrasikan bagaimana cara memperluas sistem file ini.
+### Persyaratan
 -----------------------------------------------------------------------
-1) To follow this tutorial, deploy one of the following: FreeBSD 11 x64
+1) Untuk mengikuti tutorial ini berikut menggunakan: FreeBSD 11 x64 atau terbaru
 
-    We utilized the following plan to begin our deployment:
+    Kami menggunakan paket berikut ini untuk memulai penerapan:
     | Komponen | Deskripsi |
     |--|--|
     | CPU | 1 vCore |
     | RAM | 512 MB |
     | Storage | 2 GB |
 
-2) Prior to upgrading your intance, confirm its current disk allocation & partition table: 
+2) Sebelum meng-upgrade intance/VMs Anda, konfirmasikan alokasi disk & tabel partisi saat ini: 
     ```sh term
         data@FBSD12:~ $ df -h
         Filesystem    Size    Used   Avail Capacity  Mounted on
@@ -34,21 +32,17 @@ In the event of an upgraded disk size, we will illustrate how to expand this fil
             209960   3984304    3  freebsd-ufs  (1.9G)
     ```
 
-3) Upgrade your instance's plan:
-    - Visit your Vultr management page
-    - Select the instance that you'd like to upgrade.
-    - Choose the "Settings" link near the top of the page.
-    - Click the "Change Plan" link on the Side to show a dropdown menu of available upgrade choices.
+3) Tingkatkan paket intance/VMs Anda:
 
-    In this case, we upgraded our plan to the following:
+    Dalam hal ini, kami meningkatkan intance/VMs kami menjadi sebagai berikut:
     | Komponen | Deskripsi |
     |--|--|
-    | CPU | 4 vCore |
-    | RAM | 2048 MB |
+    | CPU | 1 vCore |
+    | RAM | 1024 MB |
     | Storage | 10 GB |
 -----------------------------------------------------------------------
-### 1. Confirm New Disk Space
-Although the disk allocation appears the same at first, gpart illustrates a change::
+### 1. Konfirmasi Ruang Disk Baru
+Meskipun alokasi disk tampak sama pada awalnya, gpart mengilustrasikan adanya perubahan:
 ```sh term
     root@lab-FBSD:~ # df -h
     Filesystem    Size    Used   Avail Capacity  Mounted on
@@ -61,7 +55,7 @@ Although the disk allocation appears the same at first, gpart illustrates a chan
           1064    208896    2  freebsd-swap  (102M)
         209960   3984304    3  freebsd-ufs  (1.9G)
 ```
-### 2. Recover the Corrupt Partition
+### 2. Memulihkan Partisi yang Rusak
 ```sh term
     root@lab-FBSD:~ # gpart recover da0
     da0 recovered
@@ -74,12 +68,13 @@ Although the disk allocation appears the same at first, gpart illustrates a chan
        4194264  16777223       - free -  (8.0G)
 ```
 ### 3. Resize the freebsd-ufs Partition
-WARNING!!!
+PERINGATAN!!!
 `
-There is risk of data loss when modifying the partition table of a mounted file system. It is best to perform the following steps on an unmounted file system while running from a live CD-ROM or USB device.`
-Since this is a recently deployed instance, there is no sensitive data to backup; however, in the event of upgrading an instance currently in production, its best practice to perform an offsite backup prior to making any changes to the partition table.
+Terdapat risiko kehilangan data saat memodifikasi tabel partisi pada sistem berkas yang telah disambungkan. Sebaiknya lakukan langkah-langkah berikut ini pada sistem file yang tidak disambungkan saat menjalankan dari CD-ROM atau perangkat USB.`
 
-Once you're ready to proceed, do the following:
+Karena ini adalah instans yang baru saja digunakan, tidak ada data sensitif yang perlu dicadangkan; namun, jika Anda mengupgrade instans yang saat ini sedang dalam produksi, sebaiknya lakukan pencadangan di luar lokasi sebelum melakukan perubahan apa pun pada tabel partisi.
+
+Setelah Anda siap untuk melanjutkan, lakukan hal berikut:
 ```sh term
 root@FBSD12:/home/data # gpart resize -i 3 da0
 da0p3 resized
@@ -89,16 +84,16 @@ root@lab-FBSD:~ # gpart show
          0   3983360    1  freebsd-ufs  (1.9G)
    3983360    208896    2  freebsd-swap  (8.1G)
 ```
-### 4. Grow the UFS File System
-In order to expand the freebsd-ufs or /dev/da0p3 paritition, start the growfs service:
+### 4. Mengembangkan Sistem Berkas UFS
+Untuk memperluas parisi freebsd-ufs atau /dev/da0p3, mulai layanan growfs:
 ```sh term
 root@FBSD12:/home/data # service growfs onestart
 ```
-Alternatively, you can run the following command.
+Sebagai alternatif, Anda dapat menjalankan perintah berikut ini.
 ```sh term
-growfs  /dev/da0p3
+root@FBSD12:/home/data # growfs  /dev/da0p3
 ```
-### 5. Confirm the Changes
+### 5. Konfirmasikan Perubahan
 ```sh term
 root@FBSD12:/home/data # df -h
 Filesystem    Size    Used   Avail Capacity  Mounted on
