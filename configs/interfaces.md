@@ -9,3 +9,18 @@ defaultrouter="10.10.10.2" #IPv4 Gateway
 
 ifconfig_em0_ipv6="inet6 accept_rtadv" #IPv6 DHCP 
 ```
+
+1. restart service
+    ```sh
+    service netif restart
+    service routing restart
+
+    #atau untuk routing
+    service netif restart && service routing restart
+    ```
+
+2. restart manual ifconfig
+    ```sh
+    ifconfig network-interface down
+    ifconfig network-interface up
+    ```
