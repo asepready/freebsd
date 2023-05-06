@@ -3,6 +3,16 @@
 <img src="./../assets/images/logo.png" alt="Logo" style="width:200px;"/>
 </p>
 
+## Persiapan
+| Komponen | Deskripsi |
+| - | - |
+| Hostname | lab-fbsd |
+| Interface | em0 |
+| Host IP address | 172.16.16.99/24 |
+| IP address range | 172.16.16.100 – 172.16.16.254 |
+| Internet gateway | 172.16.16.1 |
+| Domain Local | lab-fbsd.edu |
+| DNS server/s | 172.16.16.99, 8.8.8.8 |
 ## 1. Install FreeBSD & Paket
 ## 2. Konfigurasi IP Dinamis/Statik Pada NIC
 buka dan edit untuk hostname di /etc/rc.conf
@@ -21,21 +31,19 @@ service netif restart && service routing restart
 ifconfig network-interface down
 ifconfig network-interface up
 ```
-## 3. Merubah alias & nama Host 
+## 3. Merubah alias & nama Host
 buka dan edit untuk hostname di /etc/rc.conf
 ```sh
 #/etc/rc.conf
 hostname="lab-fbsd"
 ```
 alias hosts
-```sh
+```sh file
   #Set Hosts
-    ::1                     localhost lab-fbsd.edu
-    ::1                     lab-fbsd lab-fbsd.edu
-    127.0.0.1               localhost lab-fbsd.edu
-    127.0.0.1               lab-fbsd lab-fbsd.edu
-  # I added here
-    192.168.122.2           lab-fbsd.edu lab-fbsd
+  ::1                     localhost localhost.local
+  127.0.0.1               localhost localhost.local
+  ::1                     lab-fbsd.edu lab-fbsd
+  172.16.16.99            lab-fbsd.edu lab-fbsd
 ```
 ## 3. Konfigurasi SSH
 Bagaimana masuk SSH tanpa password dengan Publik Key?</br>
