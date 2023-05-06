@@ -10,8 +10,8 @@
 | Interface | em0 |
 | Host IP address | 172.16.16.99/24 |
 | IP address range | 172.16.16.100 – 172.16.16.254 |
-| Internet gateway | 192.168.0.1 |
-| DNS server/s | 8.8.8.8, 8.8.4.4, 192.168.0.1 |
+| Internet gateway | 172.16.16.1 |
+| DNS server/s | 8.8.8.8, 8.8.4.4, 172.16.16.1 |
 
 ## Install Paket yang di butuhkan
 ```sh
@@ -22,7 +22,7 @@ pkg ins isc-dhcp44-server
 #/etc/rc.conf
 hostname="lab-fbsd.edu"
 ifconfig_em0="inet 172.16.16.99 netmask 255.255.255.0"
-defaultrouter="192.168.0.1"
+defaultrouter="172.16.16.1"
 sshd_enable=YES
 sendmail_enable=NONE
 clear_tmp_enable=YES
