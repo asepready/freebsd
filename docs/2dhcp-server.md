@@ -6,12 +6,13 @@
 ## Persiapan
 | Komponen | Deskripsi |
 | - | - |
-| Hostname | lab-fbsd.edu |
+| Hostname | lab-fbsd |
 | Interface | em0 |
 | Host IP address | 172.16.16.99/24 |
 | IP address range | 172.16.16.100 – 172.16.16.254 |
 | Internet gateway | 172.16.16.1 |
-| DNS server/s | 8.8.8.8, 8.8.4.4, 172.16.16.1 |
+| Domain Local | lab-fbsd.edu |
+| DNS server/s | 172.16.16.99, 8.8.8.8 |
 
 ## Install Paket yang di butuhkan
 ```sh

@@ -11,6 +11,7 @@
 | Host IP address | 172.16.16.99/24 |
 | IP address range | 172.16.16.100 – 172.16.16.254 |
 | Internet gateway | 172.16.16.1 |
+| Domain Local | lab-fbsd.edu |
 | DNS server/s | 172.16.16.99, 8.8.8.8 |
 
 ## Install Paket yang di butuhkan
