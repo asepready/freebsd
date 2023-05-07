@@ -6,12 +6,13 @@
 ## Persiapan
 | Komponen | Deskripsi |
 | - | - |
-| Hostname | lab-fbsd.edu |
+| Hostname | lab-fbsd |
 | Interface | em0 |
 | Host IP address | 172.16.16.99/24 |
 | IP address range | 172.16.16.100 – 172.16.16.254 |
 | Internet gateway | 172.16.16.1 |
-| DNS server/s | 8.8.8.8, 8.8.4.4, 172.16.16.1 |
+| Domain Local | lab-fbsd.edu |
+| DNS server/s | 172.16.16.99, 8.8.8.8 |
 
 ## Install Paket yang di butuhkan
 ```sh
@@ -20,7 +21,7 @@ pkg ins isc-dhcp44-server
 ## Lakukan Konfigurasi
 ```sh term
 #/etc/rc.conf
-hostname="lab-fbsd.edu"
+hostname="lab-fbsd"
 ifconfig_em0="inet 172.16.16.99 netmask 255.255.255.0"
 defaultrouter="172.16.16.1"
 sshd_enable=YES
@@ -32,10 +33,10 @@ dumpdev=NO
 ## Mengkonfigurasi Server DHCP
 Periksa dan Cadangkan konfigurasi default setelah server DHCP diinstal
 ```sh file
-cat usr/local/etc/dhcpd.conf #IPv4
-cat usr/local/etc/dhcpd6.conf #IPv6
+cat /usr/local/etc/dhcpd.conf #IPv4
+cat /usr/local/etc/dhcpd6.conf #IPv6
 
-cp usr/local/etc/dhcpd.conf usr/local/etc/dhcpd.conf.old
+cp /usr/local/etc/dhcpd.conf /usr/local/etc/dhcpd.conf.old
 ```
 1. Ubah nama-domain dan nama-domain-server di bagian atas file.
     ```sh file
@@ -53,7 +54,7 @@ cp usr/local/etc/dhcpd.conf usr/local/etc/dhcpd.conf.old
     ```sh file
     # option definitions common to all supported networks...
     option domain-name "lab-fbsd.edu";
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers lab-fbsd.edu, google.com;
 
     default-lease-time 600;
     max-lease-time 7200;
