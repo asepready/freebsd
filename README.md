@@ -3,7 +3,7 @@
 | <img src="./assets/images/logo.png" alt="FreeBSD Logo" style="width:200px;"/> | <img src="./assets/images/bsdrp.logo.128.png" alt="FreeBSD Logo" style="width:80px;"/> |
 
 
-## Catatan hasil belajar FreeBSD (All in One)
+## Catatan hasil belajar FreeBSD support 12.* => terbaru (All in One)
 
 Snapshots Backup/Restore(bectl/beadm)
 ```
@@ -20,9 +20,16 @@ bsdinstall
 
 pkg upgrade
 ```
-1. Pembelajaran untuk kebutuhan sebagai Workstation
-2. Pembelajaran untuk kebutuhan sebagai Server
-3. Pembelajaran untuk kebutuhan sebagai Router
+## 1. Pembelajaran untuk kebutuhan sebagai Workstation
+- Cara instan instal DE Dark Meta (Gnome v2) oleh Felix Caffier
+```sh
+cd /tmp
+fetch --no-verify-peer http://trisymphony.com/darkMate -o dm.sh
+chmod +x dm.sh
+./dm.sh
+```
+##  2. Pembelajaran untuk kebutuhan sebagai Server
+##  3. Pembelajaran untuk kebutuhan sebagai Router
 
 ## Sumber belajar
 - [FreeBSD Wiki | FrontPage ](https://wiki.freebsd.org/)
