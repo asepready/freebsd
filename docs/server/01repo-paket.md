@@ -1,51 +1,30 @@
-# Memulai FreeBSD
-<p align="center">
-<img src="./../assets/images/logo.png" alt="Logo" style="width:200px;"/>
-</p>
-
-## Persiapan
-| Komponen | Deskripsi |
-| - | - |
-| Hostname | lab-fbsd |
-| Interface | em0 |
-| Host IP address | 172.16.16.99/24 |
-| IP address range | 172.16.16.100 – 172.16.16.254 |
-| Internet gateway | 172.16.16.1 |
-| Domain Local | lab-fbsd.edu |
-| DNS server/s | 172.16.16.99, 8.8.8.8 |
-## 1. Install FreeBSD & Paket
-## 2. Konfigurasi IP Dinamis/Statik Pada NIC
-buka dan edit untuk hostname di /etc/rc.conf
-```sh term
-#/etc/rc.conf
-ifconfig_em0="DHCP" #IPv4 DHCP
-ifconfig_em0="inet 10.10.10.3 netmask 255.255.255.0" #IPv4 STATIC
-defaultrouter="10.10.10.2" #IPv4 Gateway
-
-ifconfig_em0_ipv6="inet6 accept_rtadv" #IPv6 DHCP 
-```
-restart service
-```sh
-service netif restart && service routing restart
-# atau berdasar NIC
-ifconfig network-interface down
-ifconfig network-interface up
-```
-## 3. Merubah alias & nama Host
-buka dan edit untuk hostname di /etc/rc.conf
-```sh
-#/etc/rc.conf
-hostname="lab-fbsd"
-```
-alias hosts
+## 1. Konfigurasi Repositori melalui Arsip Debian
+Buka dan edit untuk /etc/apt/sources.list
 ```sh file
-  #Set Hosts
-  ::1                     localhost localhost.local
-  127.0.0.1               localhost localhost.local
-  ::1                     lab-fbsd.edu lab-fbsd
-  172.16.16.99            lab-fbsd.edu lab-fbsd
+# /etc/apt/sources.list #laring
+deb http://debian.faztrain.id/ wheezy main
 ```
-## 3. Konfigurasi SSH
+
+Lakukan pengecekan pembaruan reposetori'
+```sh
+apt-get update
+```
+## 2 Pengujian Repository
+```sh term
+apt-cache search openssh-server
+apt-get install openssh-server
+```
+konfigurasi
+```sh
+# config sudo  
+gpasswd -a sysadmin sudo #term
+
+#edit file /etc/ssh/sshd_config
+Port 22
+PermitRootLogin no
+AllowUsers sysadmin
+```
+## 2.1 Konfigurasi SSH
 Bagaimana masuk SSH tanpa password dengan Publik Key?</br>
 A. Pada ``Client``,generate key pair (Public & Private Key) untuk masing client.</br>
 B. Pada ``Server`` salin public key milik client ke server serta mengaktifkan mode autentikasi dengan public key pada SSH server
@@ -57,7 +36,7 @@ Langkah-langkahnya
 1. Windows OS dengan Putty SSH Client
     ,generate key pair dengan puttygen, simpan private key di tempat aman dan simpan public key untuk disalin ke server.
 2. Linux/BSD OS, generate key pair dengan perintah ssh-keygen -t rsa -b 4096 untuk generate key rsa dengan panjang 4096 bit (default 2048). Key pair tersimpan di ~/.ssh(id_rsa/private dan id_rsa.pub/public)
-3. Konfigurasi pada server *BSD
+3. Konfigurasi pada server Debian 7
     - Buat folder .ssh pada home direktori user
     - Buat file authorized_keys di dalam folder .ssh
     - Paste public key milik client ke dalam file authorized_keys . 1 pub key pada 1 baris
@@ -67,7 +46,7 @@ Langkah-langkahnya
 Untuk public key dari putty yang disimpan ke file harus kenversi agar di mengerti oleh openssh server => ssh-keygen -i -f [windows_public_key] yang dihasilkan berupa 1 baris 
 
 --------------
-Dasar-dasar SCP (Secure Copy)
+## 2.2 Dasar-dasar SCP (Secure Copy)
 1. Transfer(uploud) file dari client ke server<br>
     ```sh
     scp /path/file.mp3 user@ipaddress:~
