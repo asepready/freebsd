@@ -20,3 +20,6 @@ virt-install --virt-type=kvm \
 qemu-img convert -c \
 /home/$USER/kvm/freebsd13.qcow2 -O qcow2 \
 /home/$USER/kvm/freebsd13-2.qcow2
+
+#run
+qemu-system-x86_64 -serial mon:stdio -serial /dev/ttyS0 -nographic -hda freebsd13.qcow2
