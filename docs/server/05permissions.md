@@ -6,8 +6,8 @@ buat direktori & beri akses di home
 mkdir /home/sysadmin/web
 mkdir /home/sysadmin/log
 # ubah kepemilikan
-chown -R sysadmin.sysadmin /home/sysadmin/web/
-chown -R sysadmin.sysadmin /home/sysadmin/log/
+chown -R sysadmin.wheel /home/sysadmin/web
+chown -R sysadmin.wheel /home/sysadmin/log
 # 755 format ( u=rwx, g=r-x, o=r-x )
 chmod -R 755 /home/sysadmin/web
 chmod -R 755 /home/sysadmin/log

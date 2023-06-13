@@ -1,7 +1,7 @@
 # Bind9
 ## Install Paket Bind9
 ```sh
-apt-get install bind9
+pkg  install bind916
 ```
 Lakukan konfigurasi dan edit file di /etc/bind/named.conf.default-zones
 ```sh file

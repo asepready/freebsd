@@ -23,8 +23,13 @@ pkg install git
 Unduh file
 ```sh
 pkg search nginx
-
-pkg fetch -d -o ~/FreeBSD:13:i386/ nginx
-
+pkg fetch -d -o /usr/local/www/FreeBSD:13:i386/ nginx-lite
 pkg install nginx-lite-1.22.1,3.pkg
+```
+
+### 3. Bersihkan 
+```sh
+pkg clean -a
+pkg clean -y
+pkg audit -F
 ```

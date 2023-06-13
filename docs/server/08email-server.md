@@ -1,6 +1,6 @@
 # Layanan Email
 ```sh
-apt-get install postfix courier-imap
+pkg install postfix courier-imap
 
 #lokasi MailBox atau penyimpan semua pesan email dari setiap user
 maildirmake /etc/skel/Maildir
@@ -43,7 +43,7 @@ Is the information correct? [Y/n] <tekan y>
 
 MUA
 ```sh file
-apt-get install roundcube
+pkg install roundcube-php80
 nano /var/lib/roundcube/config/main.inc.php
 
 $rcmail_config['default_host'] = 'abcnet-1.id';
