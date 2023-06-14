@@ -1,4 +1,0 @@
-::1                     localhost localhost.my.domain
-127.0.0.1               localhost localhost.my.domain
-# I added here
-192.168.122.2           webserverbsd.net webserver

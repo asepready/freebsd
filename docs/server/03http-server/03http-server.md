@@ -14,26 +14,16 @@ service apache24 start
 ```sh file
 #/usr/local/etc/apache24/httpd.conf
 LoadModule vhost_alias_module libexec/apache24/mod_vhost_alias.so
-LoadModule rewrite_module libexec/apache24/mod_rewrite.so
 
 ServerAdmin info@belajarbsd.id
 ServerName www.belajarbsd.id:80
 
-DocumentRoot "/usr/local/www/apache24/data"
-<Directory "/usr/local/www/apache24/data">
+DocumentRoot "/home/sysadmin/www"
+<Directory "/home/sysadmin/www">
     Options Indexes FollowSymLinks MultiViews
     AllowOverride All
-    Require all granted
-    Order allow,deny
-    allow from all
+    #Require all granted
 </Directory>
-
-ErrorLog "/usr/local/home/sysadmin/log/%d-%m-%Y-errot.log"
-<IfModule log_config_module>
-
-    #CustomLog "/var/log/httpd-access.log" common
-    CustomLog "/usr/local/home/sysadmin/log/%d-%m-%Y-access.log" combined
-</IfModule>
 
 # Virtual hosts
 Include etc/apache24/extra/httpd-vhosts.conf
@@ -43,7 +33,7 @@ Include etc/apache24/extra/httpd-vhosts.conf
 <VirtualHost *:80>
     ServerName pkg.asepready.id
     ServerAlias pkg.asepready.id
-    DocumentRoot /usr/local/home/sysadmin/web/
+    DocumentRoot "/home/sysadmin/www"
 </VirtualHost>
 ```
 apache test
@@ -66,6 +56,10 @@ listen.mode = 0660
 #/usr/local/etc/apache24/httpd.conf
 LoadModule proxy_module libexec/apache24/mod_proxy.so
 LoadModule proxy_fcgi_module libexec/apache24/mod_proxy_fcgi.so
+
+<IfModule dir_module>
+    DirectoryIndex index.php index.html
+</IfModule>
 
 <FilesMatch \.php$>
     SetHandler "proxy:unix:/var/run/php-fpm.sock|fcgi://localhost"
