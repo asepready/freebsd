@@ -1,12 +1,26 @@
 # Bind9
 ## Install Paket Bind9
 ```sh
-pkg  install bind916
+pkg install bind916
+
+rndc-confgen -a
+chown root:bind /usr/local/etc/namedb/rndc.key
+chmod 640 /usr/local/etc/namedb/rndc.key
+sysrc named_enable="YES"
+service named start
 ```
-Lakukan konfigurasi dan edit file di /etc/bind/named.conf.default-zones
+Lakukan konfigurasi dan edit file di /usr/local/etc/namedb/named.conf.default-zones
 ```sh file
-// Baris zona domain abcnet-1.id
-zone "abcnet-1.id" {
+// "/usr/local/etc/namedb/rndc.key"
+include "/usr/local/etc/namedb/rndc.key";
+
+controls {
+        inet 127.0.0.1 allow { localhost; } keys { "rndc-key"; };
+        inet 142.93.201.231 allow { 104.248.47.54; } keys { "rndc-key"; };
+};
+
+// Baris zona domain asepready.id
+zone "asepready.id" {
 type master;
 file "/etc/bind/main/db.abcnet";
 };
@@ -18,14 +32,14 @@ cp /etc/bind/db.local /etc/bind/main/db.abcnet
 
 #modif file
 $TTL 604800
-@   IN  SOA ns.abcnet-1.id. info.abcnet-1.id. (
+@   IN  SOA ns.asepready.id. admin.asepready.id. (
                 1       ;   Serial
             604800      ;   Refresh
             86400       ;   Retry
             2419200     ;   Expire
             604800 )    ;   Negative Cache TTL
 ;
-@   IN  NS  ns.abcnet-1.id.
+@   IN  NS  ns.asepready.id.
 @   IN  A   20.0.0.1
 ns  IN  A   20.0.0.1
 www IN  A   20.0.0.1
