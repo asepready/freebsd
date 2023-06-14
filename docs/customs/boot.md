@@ -1,3 +1,4 @@
+# BUat splash dan boot Tanpa Menu 
 1. Konfigurasi matikan boot menu
 - buka dan edit untuk boot menu di /boot/loader.conf
 ```sh term
@@ -24,6 +25,24 @@ splash_txt_load="NO"            # Set this to YES for TheDraw splash screen!
 vesa_load="NO"                  # Set this to YES to load the vesa module
 bitmap_load="NO"                # Set this to YES if you want splash screen!
 bitmap_name="splash.bmp"
+```
+
+# BUat console
+```sh file
+#/boot/loader.conf
+boot_multicons="YES"
+boot_serial="YES"
+comconsole_speed="115200"
+console="comconsole,vidconsole"
+
+#/etc/ttys
+#Serial console
+ttyu0 "/usr/libexec/getty 3wire" vt100 onifconsole secure
+ttyu1 "/usr/libexec/getty 3wire" vt100 onifconsole secure
+ttyu2 "/usr/libexec/getty 3wire" vt100 onifconsole secure
+ttyu3 "/usr/libexec/getty 3wire" vt100 onifconsole secure
+#Dumb console
+dcons "/usr/libexec/getty std.9600" vt100 off secure
 ```
 
 shutdown -r now
