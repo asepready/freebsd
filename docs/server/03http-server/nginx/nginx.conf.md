@@ -41,34 +41,97 @@ chmod -R 755 /home/sysadmin/www/
 
 ## 2. Konfigurasi nginx.conf
 ```sh file
-user       www www;  ## Default: nobody
-worker_processes  5;  ## Default: 1
-#error_log  /home/sysadmin/logs/error.log;
-#pid        /home/sysadmin/logs/nginx.pid;
-worker_rlimit_nofile 8192;
+user  www www;  ## Default: nobody
+
+# you must set worker processes based on your CPU cores, nginx does not benefit from setting more than that
+worker_processes auto; #some last versions calculate it automatically
+
+# number of file descriptors used for nginx
+# the limit for the maximum FDs on the server is usually set by the OS.
+# if you don't set FD's then OS settings will be used which is by default 2000
+worker_rlimit_nofile 100000;
+
+error_log  /var/log/nginx/error.log crit;
+#
+
+#pid  logs/nginx.pid;
+
 
 events {
-    worker_connections  4096;  ## Default: 1024
+    worker_connections 2048;  ## Default: 1024
+    # accept as many connections as possible, may flood worker connections if set too low -- for testing environment
+    multi_accept on;
 }
 
+
 http {
-    include     mime.types;
-    index       index.html index.htm index.php;
+    include       mime.types;
+    default_type  application/octet-stream;
 
-    default_type    application/octet-stream;
-    log_format      main '$remote_addr - $remote_user [$time_local]  $status '
-        '"$request" $body_bytes_sent "$http_referer" '
-        '"$http_user_agent" "$http_x_forwarded_for"';
-        
-    access_log      /home/sysadmin/logs/access.log  main;
-    sendfile        on;
-    tcp_nopush      on;
-    server_names_hash_bucket_size 128; # this seems to be required for some vhosts
+    #log_format  main  '$remote_addr - $remote_user [$time_local] "$request" '
+    #                  '$status $body_bytes_sent "$http_referer" '
+    #                  '"$http_user_agent" "$http_x_forwarded_for"';
 
-    #keepalive_timeout  0;
-    keepalive_timeout  65;
+    # cache informations about FDs, frequently accessed files
+    # can boost performance, but you need to test those values
+    open_file_cache max=200000 inactive=20s;
+    open_file_cache_valid 30s;
+    open_file_cache_min_uses 2;
+    open_file_cache_errors on;
 
-    #gzip  on;
+    # to boost I/O on HDD we can disable access logs
+    access_log off;
+
+    # copies data between one FD and other from within the kernel
+    # faster than read() + write()
+    sendfile on;
+
+    # send headers in one piece, it is better than sending them one by one
+    tcp_nopush on;
+
+    #access_log  logs/access.log  main;
+    # don't buffer data sent, good for small data bursts in real time
+    tcp_nodelay on;
+
+    server_names_hash_bucket_size 128;
+
+    # adjusting the buffer size
+    client_body_buffer_size 80k;
+    client_max_body_size 9m;
+    client_header_buffer_size 1k;
+
+    # putting a Limit on timeout values
+    client_body_timeout 10;
+    client_header_timeout 10;
+    keepalive_timeout 13;  #default keepalive_timeout  65; 
+    send_timeout 10;
+
+    # compression and decompression
+    gzip  on;
+    # gzip_static on;
+    gzip_min_length 10240;
+    gzip_comp_level 1;
+    gzip_vary on;
+    gzip_disable msie6;
+    gzip_proxied expired no-cache no-store private auth;
+    gzip_types
+        # text/html is always compressed by HttpGzipModule
+        text/css
+        text/javascript
+        text/xml
+        text/plain
+        text/x-component
+        application/javascript
+        application/x-javascript
+        application/json
+        application/xml
+        application/rss+xml
+        application/atom+xml
+        font/truetype
+        font/opentype
+        application/vnd.ms-fontobject
+        image/svg+xml;
+
     include vhosts/*.conf;
 }
 ```
