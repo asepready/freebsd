@@ -1,0 +1,1 @@
+grep rcvar /usr/local/etc/rc.d/*

@@ -12,7 +12,7 @@ sysrc -f /boot/loader.conf hw.vga.textmode="1"
 #-----------------------------------------------------
 # Serial terminals
 # /etc/ttys
-ttyu0   "/usr/libexec/getty std.9600"   vt100   onifconsole secure
+ttyu0   "/usr/libexec/getty std.115200"   vt100   onifconsole secure
 
 #-----------------------------------------------------
 # /etc/inetd.conf

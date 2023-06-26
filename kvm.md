@@ -1,16 +1,13 @@
 # 1. Persiapan buat Image Kosong:
 ```sh
 qemu-img create -f qcow2 \
-/home/$USER/kvm/freebsd13.qcow2 \
-10G
+/home/$USER/kvm/bsdrp.qcow2 \
+2G
 ```
 
 # 2. Menjalankan image:
 
 ```sh
-#  --disk path=ubuntu-vm-disk.qcow2,device=disk \
-#  --disk path=user-data.img,format=raw \
-#  --network default
 virt-install --name freebsd13 \
   --virt-type kvm --memory 512 --vcpus 1 \
   --boot hd,menu=on \
@@ -23,6 +20,3 @@ virt-install --name freebsd13 \
 qemu-img convert -c \
 /home/$USER/kvm/FreeBSD-12.4-STABLE-i386.qcow2 -O qcow2 \
 /home/$USER/kvm/freebsd13.qcow2
-
-#run
-qemu-system-x86_64 -serial mon:stdio -serial /dev/ttyS0 -nographic -hda freebsd13.qcow2
