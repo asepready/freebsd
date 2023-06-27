@@ -34,6 +34,7 @@ boot_multicons="YES"
 boot_serial="YES"
 comconsole_speed="115200"
 console="comconsole,vidconsole"
+hw.vga.textmode="1"
 
 #/etc/ttys
 #Serial console
