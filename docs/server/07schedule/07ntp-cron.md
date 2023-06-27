@@ -1,10 +1,6 @@
 ## Layanan Penjadwal Backup dengan Cron & NTP(Network Time Protocol)
 ```sh
-apt-get install ntpdate
-
-#konfig ntp
-ntpdate id.pool.ntp.org
-
+ntpdate -s pool.ntp.org
 #buat file backup
 mkdir ~/backup
 ```

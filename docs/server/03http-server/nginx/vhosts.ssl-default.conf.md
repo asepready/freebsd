@@ -1,11 +1,25 @@
 ```sh
-######### /usr/local/etc/nginx/vhosts/ssl-default.conf
+######### /usr/local/etc/nginx/ssl/default.conf
 
-# to generate your dhparam.pem file, run in the terminal
-openssl cert -out /etc/nginx/ssl/cert.pem 2048
+openssl genpkey -algorithm RSA -out private.key -pkeyopt rsa_keygen_bits:4096
+## Sertifikat self-signed dari kunci privat 
+
+openssl req -new -x509 -sha256 -key private.key -out certificate.crt -days 365
+```
+Output
+```
+Country Name (2 letter code) [AU]:US
+State or Province Name (full name) [Some-State]:New York
+Locality Name (eg, city) []:New York City
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:Bouncy Castles, Inc.
+Organizational Unit Name (eg, section) []:Ministry of Water Slides
+Common Name (e.g. server FQDN or YOUR name) []:server_IP_address
+Email Address []:admin@your_domain.com
+```
 ##################################################################
+openssl dhparam -out dhparam.pem 4096
 
-
+```sh
 server_tokens off;
 
 # config to don't allow the browser to render the page inside an frame or iframe
@@ -37,21 +51,24 @@ add_header X-XSS-Protection "1; mode=block";
 # more: http://www.html5rocks.com/en/tutorials/security/content-security-policy/#inline-code-considered-harmful
 add_header Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://ssl.google-analytics.com https://assets.zendesk.com https://connect.facebook.net; img-src 'self' https://ssl.google-analytics.com https://s-static.ak.facebook.com https://assets.zendesk.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.zendesk.com; font-src 'self' https://themes.googleusercontent.com; frame-src https://assets.zendesk.com https://www.facebook.com https://s-static.ak.facebook.com https://tautt.zendesk.com; object-src 'none'";
 
+ssl_session_cache   shared:SSL:10m;
+ssl_session_timeout 10m;
+
 # redirect all http traffic to https
 server {
-	listen 80 default_server;
-	listen [::]:80 default_server;
-	server_name .forgott.com;
+	listen 80 localhost;
+	listen [::]:80 localhost;
+	server_name _;
 	return 301 https://$host$request_uri;
 }
 
 server {
 	listen 443 ssl http2;
 	listen [::]:443 ssl http2;
-	server_name .forgott.com;
+	server_name _;
 
-	ssl_certificate /etc/nginx/ssl/star_forgott_com.crt;
-	ssl_certificate_key /etc/nginx/ssl/star_forgott_com.key;
+	ssl_certificate /ssl/certificate.crt;
+	ssl_certificate_key /ssl/private.key;
 
 	# enable session resumption to improve https performance
 	# http://vincent.bernat.im/en/blog/2011-ssl-session-reuse-rfc5077.html
@@ -60,7 +77,7 @@ server {
 	ssl_session_tickets off;
 
 	# Diffie-Hellman parameter for DHE ciphersuites, recommended 2048 bits
-	ssl_dhparam /etc/nginx/ssl/dhparam.pem;
+	ssl_dhparam /ssl/dhparam.pem;
 
 	# enables server-side protection from BEAST attacks
 	# http://blog.ivanristic.com/2013/09/is-beast-still-a-threat.html
@@ -76,7 +93,7 @@ server {
 	resolver 8.8.8.8 8.8.4.4;
 	ssl_stapling on;
 	ssl_stapling_verify on;
-	ssl_trusted_certificate /etc/nginx/ssl/star_forgott_com.crt;
+	ssl_trusted_certificate /ssl/certificate.crt;
 
 	# config to enable HSTS(HTTP Strict Transport Security) https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
 	# to avoid ssl stripping https://en.wikipedia.org/wiki/SSL_stripping#SSL_stripping

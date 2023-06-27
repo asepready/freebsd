@@ -27,7 +27,7 @@ bitmap_load="NO"                # Set this to YES if you want splash screen!
 bitmap_name="splash.bmp"
 ```
 
-# BUat console
+# Buat console
 ```sh file
 #/boot/loader.conf
 boot_multicons="YES"
