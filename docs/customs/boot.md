@@ -27,13 +27,14 @@ bitmap_load="NO"                # Set this to YES if you want splash screen!
 bitmap_name="splash.bmp"
 ```
 
-# BUat console
+# Buat console
 ```sh file
 #/boot/loader.conf
 boot_multicons="YES"
 boot_serial="YES"
 comconsole_speed="115200"
 console="comconsole,vidconsole"
+hw.vga.textmode="1"
 
 #/etc/ttys
 #Serial console
