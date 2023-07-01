@@ -3,19 +3,19 @@
 - buka dan edit untuk boot menu di /boot/loader.conf
 ```sh term
 #Disable boot menu
-sysrc -f /boot/loader.conf autoboot_delay=-1
-sysrc -f /boot/loader.conf beastie_disable="YES"
-sysrc -f /boot/loader.conf boot_mute="YES"
+autoboot_delay=-1
+beastie_disable="YES"
+boot_mute="YES"
 ```
 
 2.  Konfigurasi Splash
 ```sh file
 #Stop Massegae
-sysrc rc_startmsgs="NO"
-sysrc syslogd_enable="NO"
-sysrc -f /boot/loader.conf boot_mute="YES"
-sysrc -f /boot/loader.conf beastie_disable="YES"
-sysrc -f /boot/loader.conf autoboot_delay=-1
+rc_startmsgs="NO"
+syslogd_enable="NO"
+boot_mute="YES"
+beastie_disable="YES"
+autoboot_delay=-1
 
 #/boot/loader.conf
 kern.vty=sc

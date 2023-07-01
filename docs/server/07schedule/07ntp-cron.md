@@ -1,6 +1,9 @@
 ## Layanan Penjadwal Backup dengan Cron & NTP(Network Time Protocol)
 ```sh
-ntpdate -s pool.ntp.org
+sysrc ntpd_enable=YES
+ntpdate -s id.pool.ntp.org
+
+service ntpd start
 #buat file backup
 mkdir ~/backup
 ```
