@@ -14,6 +14,7 @@ portsnap fetch update
 2. Navigating the Ports Collection
 https://www.freebsd.org/ports/
 ```sh
+whereis  ssh
 cd /usr/ports/ssh
 ```
 3. Installing the Port

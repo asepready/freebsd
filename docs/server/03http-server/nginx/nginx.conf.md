@@ -2,7 +2,7 @@
 ## Install Paket Nginx dan PHP5
 ```sh
 pkg install nginx lua-resty-core lua-resty-lrucache luajit-openresty
-pkg install php82 php82-{mysqli,extensions,composer,gd}
+pkg install php80 mod_php80 php80-{mysqli,extensions,composer,gd}
 ```
 
 ## Enable Start Boot

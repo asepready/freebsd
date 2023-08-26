@@ -1,7 +1,8 @@
 # Layanan DataBase Management System (DBMS)
 ## Install Paket
+https://obsigna.com/articles/1539726598.html
 ```sh
-pkg install mariadb104-server phpMyAdmin-php80
+pkg install mariadb105-server phpMyAdmin-php80
 chmod -R 777 /var/lib/phpmyadmin/tmp
 ```
 
