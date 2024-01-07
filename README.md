@@ -44,3 +44,4 @@ chmod +x dm.sh
 - [Repo Belajar FreeBSD  Indonesia ](http://repo.belajarfreebsd.or.id/)
 - [FreeBSD Repo ](http://ftp2.freebsd.org/)
 - [CoreBSD Indonesia](http://www.corebsd.or.id/)
+- [Wazuh FreeBSD](https://www.freebsd.org/status/report-2023-04-2023-06/wazuh/)
