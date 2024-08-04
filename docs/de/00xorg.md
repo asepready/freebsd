@@ -1,0 +1,2 @@
+```sh
+pkg install xorg

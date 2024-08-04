@@ -23,9 +23,12 @@ ifconfig_em0="inet 10.10.10.3 netmask 255.255.255.0" #IPv4 STATIC
 defaultrouter="10.10.10.2" #IPv4 Gateway
 
 ifconfig_em0_ipv6="inet6 accept_rtadv" #IPv6 DHCP 
+
 ```
 restart service
 ```sh
+ifconfig em0 inet 192.168.1.1 netmask 255.255.255.0
+
 service netif restart && service routing restart
 # atau berdasar NIC
 ifconfig network-interface down
