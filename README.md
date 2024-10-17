@@ -44,3 +44,4 @@ chmod +x dm.sh
 - [Repo Belajar FreeBSD  Indonesia ](http://repo.belajarfreebsd.or.id/)
 - [FreeBSD Repo ](http://ftp2.freebsd.org/)
 - [CoreBSD Indonesia](http://www.corebsd.or.id/)
+- [Server world](https://www.server-world.info/en/note?os=FreeBSD_14&p=download)

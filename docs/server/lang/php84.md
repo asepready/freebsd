@@ -1,7 +1,7 @@
 ## Konfigurasi PHP
 
 ```sh install
-pkg install php84 php84-{mysqli,extensions,composer,gd}
+pkg install php84 php84-{mysqli,extensions,composer,gd} # mod_php84 # mod apache
 ```
 
 ```sh
@@ -22,8 +22,8 @@ LoadModule proxy_fcgi_module libexec/apache24/mod_proxy_fcgi.so
     DirectoryIndex index.php index.html
 </IfModule>
 
-<FilesMatch \.php$>
-    SetHandler "proxy:unix:/var/run/php-fpm.sock|fcgi://localhost"
+<FilesMatch "\.php$">
+    SetHandler  "proxy:fcgi://localhost:9000"
 </FilesMatch>
 
 ```
