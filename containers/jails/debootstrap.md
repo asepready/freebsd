@@ -25,6 +25,7 @@
 ```sh
 sysrc jail_enable="YES"
 sysrc jail_parallel_start="YES"
+sysrc jail_list=
 sysrc linux_enable="YES"
 ```
 5. Only if installing Squeeze, change the compatibility level declared 2.6.18.

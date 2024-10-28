@@ -1,3 +1,4 @@
+https://www.openbsd.org/faq/pf/filter.html#intro
 ## Enable Packet Filter (PF)
 ```sh
 #/etc/rc.conf
@@ -18,6 +19,7 @@ table <bruteforce> persist
 set skip on lo0
 scrub in all fragment reassemble max-mss 1440
 block all
+
 pass in proto { tcp udp } to port { 22 123 } keep state \
     (max-src-conn 15, max-src-conn-rate 3/1, overload <bruteforce> flush global)
 pass out proto tcp to port { 22 80 123 443 110 143 993 }

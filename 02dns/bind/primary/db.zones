@@ -1,0 +1,88 @@
+$TTL 86400
+@   IN  SOA  ns.asepready.id. admin.asepready.id. (
+    2023122001  ;Serial
+    3600        ;Refresh
+    1800        ;Retry
+    604800      ;Expire
+    86400       ;Minimum TTL
+)
+;
+            IN      NS      ns.asepready.id.
+            IN      MX 10   ns.asepready.id.
+            IN      A       9.9.9.3
+ns          IN      A       9.9.9.3
+www         IN      A       9.9.9.3
+ftp         IN      CNAME   ns.asepready.id.
+speedtest	IN      A       9.9.9.3
+dns         IN      A       9.9.9.3
+cli         IN      A       9.9.9.3
+pkg         IN      A       9.9.9.3
+
+abcnet-1.id.        IN      NS      ns.asepready.id. 
+abcnet-1.id.        IN      A       20.0.0.1
+www.abcnet-1.id.    IN      A       20.0.0.1
+
+abcnet-2.id.        IN      NS      ns.asepready.id.
+abcnet-2.id.        IN      A       20.0.0.2
+www.abcnet-2.id.    IN      A       20.0.0.2
+
+abcnet-3.id.        IN      NS      ns.asepready.id.
+abcnet-3.id.        IN      A       20.0.0.3
+www.abcnet-3.id.    IN      A       20.0.0.3
+
+abcnet-4.id.        IN      NS      ns.asepready.id.
+abcnet-4.id.        IN      A       20.0.0.4
+www.abcnet-4.id.    IN      A       20.0.0.4
+
+abcnet-5.id.        IN      NS      ns.asepready.id.
+abcnet-5.id.        IN      A       20.0.0.5
+www.abcnet-5.id.    IN      A       20.0.0.5
+
+abcnet-6.id.        IN      NS      ns.asepready.id.
+abcnet-6.id.        IN      A       20.0.0.6
+www.abcnet-6.id.    IN      A       20.0.0.6
+
+abcnet-7.id.        IN      NS      ns.asepready.id.
+abcnet-7.id.        IN      A       20.0.0.7
+www.abcnet-7.id.    IN      A       20.0.0.7
+
+abcnet-8.id.        IN      NS      ns.asepready.id.
+abcnet-8.id.        IN      A       20.0.0.8
+www.abcnet-8.id.    IN      A       20.0.0.8
+
+abcnet-9.id.        IN      NS      ns.asepready.id.
+abcnet-9.id.        IN      A       20.0.0.9
+www.abcnet-9.id.    IN      A       20.0.0.9
+
+abcnet-10.id.       IN      NS      ns.asepready.id.
+abcnet-10.id.       IN      A       20.0.0.10
+www.abcnet-10.id.   IN      A       20.0.0.10
+
+google.com.		    IN      NS      ns.google.com.
+ns.google.com.      IN      A       74.125.24.100
+google.com.         IN      A       74.125.24.100
+www.google.com.     IN      A       74.125.24.100
+
+msftncsi.com.		IN      NS      ns.msftncsi.com.
+ns.msftncsi.com.	IN	    A	    114.125.160.163
+msftncsi.com.		IN	    A	    114.125.160.163
+www.msftncsi.com.	IN	    A	    114.125.160.163
+dns.msftncsi.com.	IN	    A	    131.107.255.255
+;ipv6.msftncsi.com. IN      AAAA	fd3e:4f5a:5b81::1
+;ipv6.msftncsi.com. IN      A       131.107.255.255
+ipv6.msftncsi.com.	IN      A       114.125.160.163
+
+msftconnecttest.com.	    IN	NS	ns.msftconnecttest.com.
+ns.msftconnecttest.com.     IN	A	104.215.95.187
+msftconnecttest.com.	    IN	A	104.215.95.187
+www.msftconnecttest.com.	IN	A	104.215.95.187
+
+facebook.com.		IN	NS	ns.facebook.com.
+ns.facebook.com.	IN	A	69.171.250.35
+facebook.com.		IN	A	69.171.250.35
+www.facebook.com.	IN	A	69.171.250.35
+
+pool.ntp.org.		IN	NS	ns.pool.ntp.org.
+ns.pool.ntp.org.	IN	A	162.159.200.100
+pool.ntp.org.		IN	A	162.159.200.1
+id.pool.ntp.org.	IN	A	162.159.200.1

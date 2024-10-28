@@ -22,8 +22,9 @@ pkg install git
 ### 2. Install paket dari file unduhan
 Unduh file
 ```sh
+zfs create -o mountpoint=/pkg zroot/pkg #ZFS
 pkg search nginx
-pkg fetch -d -o /usr/local/www/FreeBSD:13:i386/ nginx-lite
+pkg fetch -d -o /pkg/FreeBSD:14:i386/ nginx-lite
 pkg install nginx-lite-1.22.1,3.pkg
 ```
 

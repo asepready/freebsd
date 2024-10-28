@@ -1,7 +1,7 @@
 ## Konfigurasi PHP
 
 ```sh install
-pkg install php84 php84-{mysqli,extensions,composer,gd} # mod_php84 # mod apache
+pkg install php84 php84-{mysqli,fileinfo,pcntl,extensions,composer,gd} # mod_php84 # mod apache
 ```
 
 ```sh
