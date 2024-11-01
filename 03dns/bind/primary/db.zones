@@ -8,8 +8,8 @@ $TTL 86400
 )
 ;
             IN      NS      ns.asepready.id.
-            IN      MX 10   ns.asepready.id.
             IN      A       9.9.9.3
+            IN      MX 10   ns.asepready.id.
 ns          IN      A       9.9.9.3
 www         IN      A       9.9.9.3
 ftp         IN      CNAME   ns.asepready.id.

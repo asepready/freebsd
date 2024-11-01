@@ -1,7 +1,7 @@
 # Layanan DataBase Management System (DBMS)
 ## Install Paket
 ```sh
-pkg install mariadb104-server
+pkg install mariadb1011-server phpMyAdmin5-php82
 
 #/usr/local/etc/mysql/conf.d/server.cnf
 [mysqld]
@@ -12,8 +12,7 @@ collation-server      = utf8mb4_general_ci
 
 ## Enable Start Boot
 ```sh
-sysrc mysql_enable="YES"
-#run service
+service mysql-server enable
 service mysql-server start
 ```
 ```sh
