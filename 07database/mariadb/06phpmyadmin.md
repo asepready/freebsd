@@ -37,6 +37,8 @@ Alias /phpmyadmin/ "/usr/local/www/phpMyAdmin/"
     DirectoryIndex index.php
     Options None
     AllowOverride Limit
+    #Require local
+    #Require host .belajarfreebsd.or.id
     # range of access allowed
     Require ip 127.0.0.1 10.0.0.0/24
 </Directory>
@@ -98,6 +100,7 @@ $cfg['Servers'][$i]['users'] = 'pma__users';
 
 ?>
 
+root@www:~ # chown -R www:www /usr/local/www/phpMyAdmin
 root@www:~ # service php-fpm reload
 root@www:~ # service apache24 reload
 ```

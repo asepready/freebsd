@@ -13,6 +13,7 @@ collation-server      = utf8mb4_general_ci
 ## Enable Start Boot
 ```sh
 service mysql-server enable
+sysrc mysql_args="--bind-address=127.0.0.1"
 service mysql-server start
 ```
 ```sh
