@@ -4,7 +4,7 @@ To see services status or enable/disable services, Configure like follows.
 [1]	Display services.
 ```sh
 # display list of services that are enabled
-root@hosts:~# service -e
+root@belajarfreebsd:~# service -e
 /etc/rc.d/hostid
 /etc/rc.d/zpool
 /etc/rc.d/zpoolupgrade
@@ -18,7 +18,7 @@ root@hosts:~# service -e
 .....
 
 # list all services
-root@hosts:~# service -l
+root@belajarfreebsd:~# service -l
 DAEMON
 FILESYSTEMS
 LOGIN
@@ -36,18 +36,18 @@ automount
 [2]	To enable or disable services, configure as follows.
 ```sh
 # for example, stop sshd service
-root@hosts:~# service sshd stop
+root@belajarfreebsd:~# service sshd stop
 Stopping sshd.
 Waiting for PIDS: 727.
-root@hosts:~# vi /etc/rc.conf
+root@belajarfreebsd:~# vi /etc/rc.conf
 # disable sshd and turn off auto-starting
 sshd_enable="NO"
 # for example, enable ntpd service and turn on auto-starting
-root@hosts:~# vi /etc/rc.conf
+root@belajarfreebsd:~# vi /etc/rc.conf
 # add to last line
 ntpd_enable="YES"
 # start ntpd service
-root@hosts:~# service ntpd start
+root@belajarfreebsd:~# service ntpd start
 Security policy loaded: MAC/ntpd (mac_ntpd)
 Starting ntpd.
 ```

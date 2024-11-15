@@ -3,7 +3,7 @@ Initial Settings : Vim Settings
 Configure Vim that is more convenience than vi.
 [1]	Install Vim.
 ```sh
-root@hosts:~# pkg install -y vim
+root@belajarfreebsd:~# pkg install -y vim
 ```
 [2]	Configure Vim.
 On the example below, Apply to a user.
@@ -11,7 +11,7 @@ You may want to select and apply each parameter according to your own preference
 If you like to applly settings to all users as the system wide, add the settings in [/usr/local/etc/vim/vimrc].
 * For [/usr/local/etc/vim] directory, create it manually.
 ```sh
-sysadmin@hosts:~$ vi ~/.vimrc
+sysadmin@belajarfreebsd:~$ vi ~/.vimrc
 " use extended feature of vim (no compatible with vi)
 set nocompatible
 

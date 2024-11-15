@@ -38,27 +38,27 @@ Configure NTP Client.
 [2]	Client configuration is mostly the same with Server's one,
 however NTP Clients does not need to receive time synchronization requests from other hosts, so it does not need to specify the line [restrict ***].
 ```sh
-root@belajar:~# pkg install -y ntp
-root@belajar:~# vi /etc/ntp.conf
+root@belajarfreebsd:~# pkg install -y ntp
+root@belajarfreebsd:~# vi /etc/ntp.conf
 # line 32 : comment out default settings and add NTP Servers for your timezone
 #pool 0.freebsd.pool.ntp.org iburst
 #pool 2.freebsd.pool.ntp.org iburst
 pool dlp.srv.world iburst 
 
-root@belajar:~# service ntpd enable
+root@belajarfreebsd:~# service ntpd enable
 ntpd enabled in /etc/rc.conf
-root@belajar:~# service ntpd start
+root@belajarfreebsd:~# service ntpd start
 Security policy loaded: MAC/ntpd (mac_ntpd)
 Starting ntpd.
 # verify status
-root@belajar:~# ntpq -p
+root@belajarfreebsd:~# ntpq -p
      remote           refid      st t when poll reach   delay   offset  jitter
 ==============================================================================
  dlp.srv.world   .POOL.          16 p    -   64    0    0.000   +0.000   0.000
 *dlp.srv.world   61.205.120.130   2 u    -   64    1    0.291  +13.266   0.756
 [2]	To Install NTPStat, it's possible to display time synchronization status.
-root@belajar:~# pkg install ntpstat
-root@belajar:~# ntpstat
+root@belajarfreebsd:~# pkg install ntpstat
+root@belajarfreebsd:~# ntpstat
 synchronised to NTP server (10.0.0.30) at stratum 3
    time correct to within 90 ms
    polling server every 64 s

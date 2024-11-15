@@ -4,13 +4,13 @@ After it has been a production System, maybe it's difficult to update System, bu
 [1]	To update installed packages to the latest version, do like follows.
 ```sh
 # update repository catalogue
-root@hosts:~# pkg update
+root@belajarfreebsd:~# pkg update
 Updating FreeBSD repository catalogue...
 FreeBSD repository is up to date.
 All repositories are up to date.
 
 # update all packages in the system
-root@hosts:~# pkg upgrade -y
+root@belajarfreebsd:~# pkg upgrade -y
 The package management tool is not yet installed on your system.
 Do you want to fetch and install it now? [y/N]: y
 Bootstrapping pkg from pkg+http://pkg.FreeBSD.org/FreeBSD:14:amd64/quarterly, please wait...
@@ -30,10 +30,10 @@ Checking integrity... done (0 conflicting)
 Your packages are up to date.
 [2]	To update the base system including the kernel to the latest version, do like follows.
 # current version
-root@hosts:~# freebsd-version
+root@belajarfreebsd:~# freebsd-version
 14.0-RELEASE
 # download the latest patches
-root@hosts:~# freebsd-update fetch
+root@belajarfreebsd:~# freebsd-update fetch
 src component not installed, skipped
 Looking up update.FreeBSD.org mirrors... 3 mirrors found.
 Fetching public key from update2.freebsd.org... done.
@@ -58,7 +58,7 @@ The following files will be updated as part of updating to
 # to quit, press [q] key
 
 # apply the downloaded patches
-root@hosts:~# freebsd-update install
+root@belajarfreebsd:~# freebsd-update install
 src component not installed, skipped
 Creating snapshot of existing boot environment... done.
 Installing updates...
@@ -73,15 +73,15 @@ Scanning /usr/share/certs/trusted for certificates...
  done.
 
 # if the kernel is updated, reboot is required
-root@hosts:~# reboot
-root@hosts:~# freebsd-version
+root@belajarfreebsd:~# reboot
+root@belajarfreebsd:~# freebsd-version
 14.0-RELEASE-p8
 [3]	To update your system to the latest minor version, do like follows.
 # current version
-root@hosts:~# freebsd-version
+root@belajarfreebsd:~# freebsd-version
 14.0-RELEASE-p8
 # upgrade to FreeBSD 14.1
-root@hosts:~# freebsd-update upgrade -r 14.1-RELEASE
+root@belajarfreebsd:~# freebsd-update upgrade -r 14.1-RELEASE
 src component not installed, skipped
 Looking up update.FreeBSD.org mirrors... 3 mirrors found.
 Fetching metadata signature for 14.0-RELEASE from update1.freebsd.org... done.
@@ -125,7 +125,7 @@ The following files will be removed as part of updating to
 # to quit, press [q] key
 
 # apply the downloaded patches
-root@hosts:~# freebsd-update install
+root@belajarfreebsd:~# freebsd-update install
 src component not installed, skipped
 Creating snapshot of existing boot environment... done.
 Installing updates...
@@ -134,8 +134,8 @@ Kernel updates have been installed.  Please reboot and run
 
 # After upgrading, reboot the computer and
 # run [freebsd-update] again as instructed in the message
-root@hosts:~# reboot
-root@hosts:~# freebsd-update install
+root@belajarfreebsd:~# reboot
+root@belajarfreebsd:~# freebsd-update install
 src component not installed, skipped
 Creating snapshot of existing boot environment... done.
 Installing updates...
@@ -149,5 +149,5 @@ Scanning /usr/share/certs/untrusted for certificates...
 Scanning /usr/share/certs/trusted for certificates...
  done.
 
-root@hosts:~# freebsd-version
+root@belajarfreebsd:~# freebsd-version
 14.1-RELEASE-p2

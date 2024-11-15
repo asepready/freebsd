@@ -3,7 +3,7 @@ Initial Settings : Network Settings
 Change to static IP addres if you use FreeBSD as a network server.
 ```sh
 [1]	The interface name [vtnet0] is different on each environment, replace it to your own one.
-root@hosts:~# ifconfig
+root@belajarfreebsd:~# ifconfig
 vtnet0: flags=1008843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST,LOWER_UP> metric 0 mtu 1500
         options=4c07bb<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,JUMBO_MTU,VLAN_HWCSUM,TSO4,TSO6,LRO,VLAN_HWTSO,LINKSTATE,TXCSUM_IPV6>
         ether 52:54:00:63:92:e4
@@ -20,9 +20,9 @@ lo0: flags=1008049<UP,LOOPBACK,RUNNING,MULTICAST,LOWER_UP> metric 0 mtu 16384
         groups: lo
         nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
 
-root@hosts:~# ee /etc/rc.conf
+root@belajarfreebsd:~# ee /etc/rc.conf
 # set hostname
-hostname="hosts"
+hostname="belajarfreebsd"
 # set static IPv4 address and subnet mask
 ifconfig_vtnet0="inet 10.0.0.30/24"
 # default gateway
@@ -37,8 +37,8 @@ moused_nondefault_enable="NO"
 dumpdev="AUTO"
 zfs_enable="YES"
 
-root@hosts:~# service netif restart
-root@hosts:~# ifconfig
+root@belajarfreebsd:~# service netif restart
+root@belajarfreebsd:~# ifconfig
 vtnet0: flags=1008843<UP,BROADCAST,RUNNING,SIMPLEX,MULTICAST,LOWER_UP> metric 0 mtu 1500
         options=4c07bb<RXCSUM,TXCSUM,VLAN_MTU,VLAN_HWTAGGING,JUMBO_MTU,VLAN_HWCSUM,TSO4,TSO6,LRO,VLAN_HWTSO,LINKSTATE,TXCSUM_IPV6>
         ether 52:54:00:63:92:e4
@@ -55,7 +55,7 @@ lo0: flags=1008049<UP,LOOPBACK,RUNNING,MULTICAST,LOWER_UP> metric 0 mtu 16384
         groups: lo
         nd6 options=21<PERFORMNUD,AUTO_LINKLOCAL>
 
-root@hosts:~# ee /etc/resolv.conf
+root@belajarfreebsd:~# ee /etc/resolv.conf
 # set DNS search base and name servers
 search belajarfreebsd.or.id
 nameserver 8.8.8.8
