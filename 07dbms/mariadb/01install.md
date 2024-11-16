@@ -17,7 +17,7 @@ sysrc mysql_args="--bind-address=127.0.0.1"
 service mysql-server start
 ```
 ```sh
-root@www:~ # mysql_secure_installation
+root@www:~# mysql_secure_installation
 
 NOTE: RUNNING ALL PARTS OF THIS SCRIPT IS RECOMMENDED FOR ALL MariaDB
       SERVERS IN PRODUCTION USE!  PLEASE READ EACH STEP CAREFULLY!
@@ -91,7 +91,7 @@ installation should now be secure.
 Thanks for using MariaDB!
 
 # connect to MariaDB
-root@www:~ # mysql
+root@www:~# mysql
 Welcome to the MariaDB monitor.  Commands end with ; or \g.
 Your MariaDB connection id is 9
 Server version: 10.11.6-MariaDB FreeBSD Ports
@@ -164,8 +164,8 @@ Bye
 ```
 	If you'd like to delete all data of MariaDB and initialize it, run like follows.
 ```sh
-root@www:~ # service mysql-server stop
-root@www:~ # rm -rf /var/db/mysql/*
-root@www:~ # mysql_install_db --datadir=/var/db/mysql --user=mysql
-root@www:~ # service mysql-server start
+root@www:~# service mysql-server stop
+root@www:~# rm -rf /var/db/mysql/*
+root@www:~# mysql_install_db --datadir=/var/db/mysql --user=mysql
+root@www:~# service mysql-server start
 ```
