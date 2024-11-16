@@ -1,5 +1,5 @@
 <?php
-$Direktori = "/usr/local/www/FreeBSD:13:i386"; // Specify the path to the Direktori you want to display
+$Direktori = "/usr/local/www/repos/FreeBSD:14:amd64"; // Specify the path to the Direktori you want to display
 
 // Get the list of files and directories in the specified Direktori
 $files = scandir($Direktori);

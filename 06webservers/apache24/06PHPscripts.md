@@ -9,17 +9,15 @@ pkg install -y php82
 
 [2]	Configure Apache httpd.
 ```sh
-
-root@www:~ # vi /usr/local/etc/apache24/httpd.conf
 # line 66 : uncomment
-LoadModule mpm_event_module libexec/apache24/mod_mpm_event.so
+sed -i -e '/mod_mpm_event.so/s/#LoadModule/LoadModule/' /usr/local/etc/apache24/httpd.conf
 # line 67 : comment
-#LoadModule mpm_prefork_module libexec/apache24/mod_mpm_prefork.so
+sed -i -e '/mod_mpm_prefork.so/s/LoadModule/#LoadModule/' /usr/local/etc/apache24/httpd.conf
 # line 129 : uncomment
-LoadModule proxy_module libexec/apache24/mod_proxy.so
+sed -i -e '/mod_proxy.so/s/#LoadModule/LoadModule/' /usr/local/etc/apache24/httpd.conf
 # line 133 : uncomment
-LoadModule proxy_fcgi_module libexec/apache24/mod_proxy_fcgi.so
-root@www:~ # vi /usr/local/etc/php-fpm.d/www.conf
+sed -i -e '/mod_proxy_fcgi.so/s/#LoadModule/LoadModule/' /usr/local/etc/apache24/httpd.conf
+root@www:~ # ee /usr/local/etc/php-fpm.d/www.conf
 # line 45 : change
 listen = 127.0.0.1:9000
 #listen = /var/run/php-fpm.sock
@@ -37,19 +35,10 @@ root@www:~ # vi /usr/local/etc/apache24/modules.d/003_php-fpm.conf
         SetHandler "proxy:fcgi://127.0.0.1:9000"
     </FilesMatch>
 </IfModule>
-
-root@www:~ # vi /usr/local/etc/apache24/extra/httpd-ssl.conf
-.....
-.....
-    <FilesMatch \.php$>
-        SetHandler proxy:fcgi://127.0.0.1:9000
-    </FilesMatch>
-</VirtualHost>
-
 root@www:~ # cp /usr/local/etc/php.ini-production /usr/local/etc/php.ini
 
 root@www:~ # sysrc php_fpm_enable="YES"
-root@www:~ # service php-fpm start
+root@www:~ # service php_fpm start
 Performing sanity check on php-fpm configuration:
 [30-Jan-2024 11:10:13] NOTICE: configuration file /usr/local/etc/php-fpm.conf test is successful
 
