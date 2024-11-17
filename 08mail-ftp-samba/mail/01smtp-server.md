@@ -1,18 +1,19 @@
 Mail Server : Install Postfix
  	
 Install Postfix to configure SMTP Server.
+
 [1]	Install Postfix.
 ```sh
-root@mail:~ # pkg install -y postfix
+root@mail:~# pkg install -y postfix
 ```
 [2]	This example shows to configure SMTP-Auth to use Dovecot's SASL feature.
 ```sh
-root@mail:~ # vi /usr/local/etc/postfix/main.cf
+root@mail:~# vi /usr/local/etc/postfix/main.cf
 # line 98 : uncomment and specify hostname
-myhostname = mail.asepready.id
+myhostname = mail.srv.world
 
 # line 106 : uncomment and specify domain name
-mydomain = asepready.id
+mydomain = srv.world
 
 # line 122 : uncomment
 myorigin = $mydomain
@@ -68,20 +69,20 @@ smtpd_recipient_restrictions =
   reject_unauth_destination
 
 # disable sendmail
-root@mail:~ # sysrc sendmail_enable="NO"
-root@mail:~ # vi /etc/periodic.conf
+root@mail:~# sysrc sendmail_enable="NO"
+root@mail:~# vi /etc/periodic.conf
 # create new
 daily_clean_hoststat_enable="NO"
 daily_status_mail_rejects_enable="NO"
 daily_status_include_submit_mailq="NO"
 daily_submit_queuerun="NO"
 
-root@mail:~ # install -d /usr/local/etc/mail
-root@mail:~ # install -m 0644 /usr/local/share/postfix/mailer.conf.postfix /usr/local/etc/mail/mailer.conf
-root@mail:~ # postalias /etc/aliases
-root@mail:~ # newaliases
-root@mail:~ # service postfix enable
-root@mail:~ # service postfix start
+root@mail:~# install -d /usr/local/etc/mail
+root@mail:~# install -m 0644 /usr/local/share/postfix/mailer.conf.postfix /usr/local/etc/mail/mailer.conf
+root@mail:~# postalias /etc/aliases
+root@mail:~# newaliases
+root@mail:~# service postfix enable
+root@mail:~# service postfix start
 ```
 [3]	Configure additional settings for Postfix if you need.
 It's possible to reject many spam emails with the settings below.
@@ -89,7 +90,7 @@ However, you should consider to apply the settings,
 because sometimes normal emails are also rejected with them.
 Especially, there are SMTP servers that forward lookup and reverse lookup of their hostnames on DNS do not match even if they are not spammers.
 ```sh
-root@mail:~ # vi /usr/local/etc/postfix/main.cf
+root@mail:~# vi /usr/local/etc/postfix/main.cf
 # add to last line
 # reject unknown clients that forward lookup and reverse lookup of their hostnames on DNS do not match
 smtpd_client_restrictions = permit_mynetworks, reject_unknown_client_hostname, permit
@@ -102,5 +103,5 @@ smtpd_sender_restrictions = permit_mynetworks, reject_unknown_sender_domain, rej
 # not registered with FQDN when your SMTP server receives HELO command
 smtpd_helo_restrictions = permit_mynetworks, reject_unknown_hostname, reject_non_fqdn_hostname, reject_invalid_hostname, permit
 
-root@mail:~ # service postfix reload
+root@mail:~# service postfix reload
 ```
