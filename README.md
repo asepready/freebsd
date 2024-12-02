@@ -2,6 +2,8 @@
 | :------------- | :------------- |
 | <img src="./assets/images/logo.png" alt="FreeBSD Logo" style="width:200px;"/> | <img src="./assets/images/bsdrp.logo.128.png" alt="FreeBSD Logo" style="width:80px;"/> |
 
+# Domain lokal
+DNS nsx.srv.cnsa
 
 ## Catatan hasil belajar FreeBSD support 12.* => terbaru (All in One)
 

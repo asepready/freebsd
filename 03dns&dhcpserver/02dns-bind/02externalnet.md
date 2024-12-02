@@ -4,16 +4,16 @@ Install BIND to Configure DNS (Domain Name System) Server to provide Name or Add
 
 [1]	Install BIND.
 ```sh
-root@belajarfreebsd:~# pkg install -y bind918 bind-tools
+root@nsx:~# pkg install -y bind918 bind-tools
 ```
 [2]	On this example, Configure BIND for External Network.
-The example follows is for the case that External network is [172.16.0.80/29], Domain name is [belajarfreebsd.or.id], Replace them to your own environment.
+The example follows is for the case that External network is [172.16.0.80/29], Domain name is [srv.cnsa], Replace them to your own environment.
 ( Actually, [172.16.0.80/29] is for private IP addresses, replace to your global IP addresses. )
 ```sh
-root@belajarfreebsd:~# vi /usr/local/etc/namedb/named.conf
+root@nsx:~# vi /usr/local/etc/namedb/named.conf
 // line 20 : specify IP address bind listens
 // if listen all, specify [any]
-         listen-on       { 10.0.0.30; };
+         listen-on       { 192.168.122.100; };
 
 // line 25 : if bind listens on IPv6, comment out and set IPv6 address
 // if listen all, specify [any]
@@ -33,17 +33,17 @@ root@belajarfreebsd:~# vi /usr/local/etc/namedb/named.conf
 // add to last line
 include "/usr/local/etc/namedb/external-zones.conf";
 
-root@belajarfreebsd:~# vi /usr/local/etc/namedb/external-zones.conf
+root@nsx:~# vi /usr/local/etc/namedb/external-zones.conf
 // create new
 // add zones for your network and domain name
-zone "belajarfreebsd.or.id" IN {
+zone "srv.cnsa" IN {
         type primary;
-        file "/usr/local/etc/namedb/primary/belajarfreebsd.or.id.wan";
+        file "/usr/local/etc/namedb/primary/srv.cnsa.wan";
         allow-update { none; };
 };
-zone "80.0.16.172.in-addr.arpa" IN {
+zone "122.168.192.in-addr.arpa" IN {
         type primary;
-        file "/usr/local/etc/namedb/primary/80.0.16.172.db";
+        file "/usr/local/etc/namedb/primary/122.168.192.db";
         allow-update { none; };
 };
 ```

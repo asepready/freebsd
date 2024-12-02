@@ -4,17 +4,17 @@ Install BIND to Configure DNS (Domain Name System) Server to provide Name or Add
 
 [1]	Install BIND.
 ```sh
-root@belajarfreebsd:~# pkg install -y bind918 bind-tools
+root@nsx:~# pkg install -y bind918 bind-tools
 ```
-[2]	On this example, Configure BIND for Internal Network. The example follows is for the case that Local network is [10.0.0.0/24], Domain name is [belajarfreebsd.or.id], Replace them to your own environment.
+[2]	On this example, Configure BIND for Internal Network. The example follows is for the case that Local network is [192.168.122.0/24], Domain name is [srv.cnsa], Replace them to your own environment.
 ```sh
-root@belajarfreebsd:~# vi /usr/local/etc/namedb/named.conf
+root@nsx:~# vi /usr/local/etc/namedb/named.conf
 // line 8 : add to set ACL entry for your local network
-acl internal-network { 10.0.0.0/24; };
+acl internal-network { 192.168.122.0/24; };
 
 // line 20 : specify IP address bind listens
 // if listen all, specify [any]
-         listen-on       { 10.0.0.30; };
+         listen-on       { 192.168.122.100; };
 
 // line 25 : if bind listens on IPv6, comment out and set IPv6 address
 // if listen all, specify [any]
@@ -33,17 +33,17 @@ acl internal-network { 10.0.0.0/24; };
 // add to last line
 include "/usr/local/etc/namedb/internal-zones.conf";
 
-root@belajarfreebsd:~# vi /usr/local/etc/namedb/internal-zones.conf
+root@nsx:~# vi /usr/local/etc/namedb/internal-zones.conf
 // create new
 // add zones for your network and domain name
-zone "belajarfreebsd.or.id" IN {
+zone "srv.cnsa" IN {
         type primary;
-        file "/usr/local/etc/namedb/primary/belajarfreebsd.or.id.lan";
+        file "/usr/local/etc/namedb/primary/srv.cnsa.lan";
         allow-update { none; };
 };
-zone "0.0.10.in-addr.arpa" IN {
+zone "122.168.192.in-addr.arpa" IN {
         type primary;
-        file "/usr/local/etc/namedb/primary/0.0.10.db";
+        file "/usr/local/etc/namedb/primary/122.168.192.db";
         allow-update { none; };
 };
 
