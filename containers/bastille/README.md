@@ -41,8 +41,37 @@ sysrc bastille_rcorder=YES
 # By default, Bastille will start all created containers at boot when enabled.
 sysrc bastille_list="www"
 ```
+Firewall
+```sh
+ext_if="em0"
+lo_if="bastille0"
+
+set block-policy return
+scrub in on $ext_if all fragment reassemble
+set skip on lo
+
+table <jails> persist
+nat on $ext_if from <jails> to any -> ($ext_if:0)
+rdr-anchor "rdr/*"
+
+block in all
+pass out quick keep state
+antispoof for $ext_if inet
+pass in inet proto tcp from any to any port ssh flags S/SA keep state
+
+pass in quick on $ext_if inet proto { tcp udp } from any to any
+pass out quick on $ext_if inet proto { tcp udp } from any to any
+
+pass in quick on $lo_if inet proto { tcp udp } from any to any
+pass out quick on $lo_if inet proto { tcp udp } from any to any
+```
+
+Enable forwarding
+```sh
+sysrc gateway_enable="YES"
+sysctl net.inet.ip.forwarding=1
+```
 This method will install the latest files from GitHub directly onto your system. It is verbose about the files it installs (for later removal), and also has a make uninstall target. You may need to manually copy the .sample config into place before Bastille will run. (ie; /usr/local/etc/bastille/bastille.conf.sample)
 
 Note: installing using this method overwrites the version variable to match that of the source revision commit hash.
 
-File config /usr/local/etc/bastille/bastille.conf

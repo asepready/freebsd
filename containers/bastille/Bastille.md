@@ -2,6 +2,10 @@
 # create Container quick
 bastille create www 13.4-RELEASE 10.0.0.254/24
 
+# template 
+bastille bootstrap https://gitlab.com/bastillebsd-templates/apache
+bastille template www bastillebsd-templates/apache
+
 # Show Container Running
 bastille list
 
