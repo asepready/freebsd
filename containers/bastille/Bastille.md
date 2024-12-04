@@ -1,6 +1,14 @@
 ```sh
+# Download Base Image
+bastille bootstrap 14.1-RELEASE #FreeBSD
+bastille bootstrap bionic # Linux Ubuntu 18.04
+
 # create Container quick
-bastille create www 13.4-RELEASE 10.0.0.254/24
+bastille create www 14.1-RELEASE 10.0.0.254 #Create Contaier FreeBSD
+bastille rdr wazuh udp 53 53
+bastille rdr wazuh tcp 80 80
+
+bastille create -L ubuntu-bionic bionic 10.0.0.254 # Create Contaier Linux
 
 # template 
 bastille bootstrap https://gitlab.com/bastillebsd-templates/apache

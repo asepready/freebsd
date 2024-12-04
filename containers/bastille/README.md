@@ -43,8 +43,7 @@ sysrc bastille_list="www"
 ```
 Firewall
 ```sh
-ext_if="em0"
-lo_if="bastille0"
+ext_if="vtnet0"
 
 set block-policy return
 scrub in on $ext_if all fragment reassemble
@@ -58,12 +57,6 @@ block in all
 pass out quick keep state
 antispoof for $ext_if inet
 pass in inet proto tcp from any to any port ssh flags S/SA keep state
-
-pass in quick on $ext_if inet proto { tcp udp } from any to any
-pass out quick on $ext_if inet proto { tcp udp } from any to any
-
-pass in quick on $lo_if inet proto { tcp udp } from any to any
-pass out quick on $lo_if inet proto { tcp udp } from any to any
 ```
 
 Enable forwarding
