@@ -14,7 +14,7 @@ PKG
 pkg install vim git-lite bash ca_root_nss
 pkg install bastille
 sysrc bastille_enable=YES
-sysrc bastille_rcorder=YES
+sysrc bastille_rcorder=YES # Optional
 ```
 To install from source (don’t worry, no compiling):
 
@@ -22,13 +22,7 @@ ports
 ```sh
 make -C /usr/ports/sysutils/bastille install clean
 sysrc bastille_enable=YES
-sysrc bastille_rcorder=YES
-```
-network
-```sh
-sysrc cloned_interfaces+=lo1
-sysrc ifconfig_lo1_name="bastille0"
-service netif cloneup
+sysrc bastille_rcorder=YES # Optional
 ```
 GIT
 ```sh
@@ -40,6 +34,12 @@ sysrc bastille_rcorder=YES
 
 # By default, Bastille will start all created containers at boot when enabled.
 sysrc bastille_list="www"
+```
+network
+```sh
+sysrc cloned_interfaces+=lo1
+sysrc ifconfig_lo1_name="bastille0"
+service netif cloneup
 ```
 Firewall
 ```sh

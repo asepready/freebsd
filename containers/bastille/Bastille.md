@@ -5,13 +5,15 @@ bastille bootstrap bionic # Linux Ubuntu 18.04
 
 # create Container quick
 bastille create www 14.1-RELEASE 10.0.0.254 #Create Contaier FreeBSD
-bastille rdr wazuh udp 53 53
-bastille rdr wazuh tcp 80 80
+bastille rdr www udp 53 53
+bastille rdr www tcp 80 80
 
 bastille create -L ubuntu-bionic bionic 10.0.0.254 # Create Contaier Linux
 
 # template 
 bastille bootstrap https://gitlab.com/bastillebsd-templates/apache
+bastille bootstrap https://gitlab.com/bastillebsd-templates/nginx
+
 bastille template www bastillebsd-templates/apache
 
 # Show Container Running
