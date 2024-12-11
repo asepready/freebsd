@@ -33,7 +33,7 @@ root@localhost [(none)]> create database zabbix character set utf8mb4 collate ut
 Query OK, 1 row affected (0.00 sec)
 
 # replace the [password] to the any password you like
-root@localhost [(none)]> create user zabbix@'localhost' identified by 'password'; 
+root@localhost [(none)]> create user zabbix@'localhost' identified by 'dbzabpass'; 
 Query OK, 0 rows affected (0.00 sec)
 
 root@localhost [(none)]> grant all privileges on zabbix.* to zabbix@'localhost'; 
@@ -46,13 +46,13 @@ root@localhost [(none)]> exit
 Bye
 
 root@belajarfreebsd:~# cd /usr/local/share/zabbix7/server/database/mysql
-root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u zabbix -p zabbix < schema.sql
+root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u zabbix -p'dbzabpass' zabbix < schema.sql
 Enter password:   # the password you set above for [zabbix] user
-root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u zabbix -p zabbix < images.sql
+root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u zabbix -p'dbzabpass' zabbix < images.sql
 Enter password:
-root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u zabbix -p zabbix < data.sql
+root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u zabbix -p'dbzabpass' zabbix < data.sql
 Enter password:
-root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -e "set global log_bin_trust_function_creators = 0;"
+root@dlp:/usr/local/share/zabbix7/server/database/mysql # mysql -u root -p'123456' -e "set global log_bin_trust_function_creators = 0;"
 ```
 [7]	Configure and start Zabbix Server.
 ```sh
@@ -62,7 +62,7 @@ DBName=zabbix
 # line 117 : confirm DB username
 DBUser=zabbix
 # line 126 : add DB user's password
-DBPassword=password
+DBPassword=dbzabpass
 root@belajarfreebsd:~# service zabbix_server enable
 zabbix_server enabled in /etc/rc.conf
 root@belajarfreebsd:~# service zabbix_server start
@@ -103,7 +103,8 @@ root@belajarfreebsd:~# vi /usr/local/etc/apache24/Includes/zabbix.conf
     DirectoryIndex index.php zabbix.php
     Options FollowSymLinks
     AllowOverride None
-    Require all granted
+    #Require all granted
+    Require ip 127.0.0.1 192.168.122.0/24
 </Directory>
 
 <Directory "/usr/local/www/zabbix7/conf">

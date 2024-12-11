@@ -11,7 +11,7 @@ Server=10.0.0.30
 # line 167 : specify Zabbix server
 ServerActive=10.0.0.30
 # line 178 : change to your hostname
-Hostname=node01.srv.world
+Hostname=node01
 root@node01:~# service zabbix_agentd enable
 zabbix_agentd enabled in /etc/rc.conf
 root@node01:~# service zabbix_agentd start

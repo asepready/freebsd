@@ -3,7 +3,7 @@
 ```sh
 pkg install mysql80-server
 
-#/usr/local/etc/mysql/conf.d/server.cnf
+#/usr/local/etc/mysql/my.cnf
 [mysqld]
 
 character-set-server  = utf8mb4

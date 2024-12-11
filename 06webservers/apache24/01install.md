@@ -16,20 +16,27 @@ ServerAdmin admin@belajarfreebsd.or.id
 # sed -i -e 's/#ServerName www.example.com:80/ServerName belajarfreebsd.or.id:80/g' /usr/local/etc/apache24/httpd.conf
 ServerName belajarfreebsd.or.id:80
 # line 264 : change (remove [Indexes])
+# sed -i -e 's/Options Indexes FollowSymLinks/Options FollowSymLinks/g' /usr/local/etc/apache24/httpd.conf
 Options FollowSymLinks
 # line 271 : change
+# sed -i -e 's/AllowOverride None/AllowOverride All/g' /usr/local/etc/apache24/httpd.conf
 AllowOverride All
 # line 287 : add follows if you need
 # file names that it can access only with directory name
+# sed -i -e 's/DirectoryIndex index.html/DirectoryIndex index.html index.php index.cgi/g' /usr/local/etc/apache24/httpd.conf
 DirectoryIndex index.html index.php index.cgi
 # line 334 : comment out to switch to combined log
+# sed -i -e 's/CustomLog "\/var\/log\/httpd-access.log" common/#CustomLog "\/var\/log\/httpd-access.log" common/g' /usr/local/etc/apache24/httpd.conf
 #CustomLog "/var/log/httpd-access.log" common
 # line 340 : uncomment to switch to combined log
+# sed -i -e 's/#CustomLog "\/var\/log\/httpd-access.log" combined/CustomLog "\/var\/log\/httpd-access.log" combined/g' /usr/local/etc/apache24/httpd.conf
 CustomLog "/var/log/httpd-access.log" combined
 # line 518 : uncomment to switch
+# sed -i -e '/httpd-default.conf/s/#Include/Include/' /usr/local/etc/apache24/httpd.conf
 Include etc/apache24/extra/httpd-default.conf
 root@www:~ # ee /usr/local/etc/apache24/extra/httpd-default.conf
 # line 55 : change (server response header)
+# sed -i -e 's/ServerTokens Full/ServerTokens Prod/g' /usr/local/etc/apache24/extra/httpd-default.conf
 ServerTokens Prod
 root@www:~ # sysrc apache24_enable="YES"
 apache24_enable:  -> YES
