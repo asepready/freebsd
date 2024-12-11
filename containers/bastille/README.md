@@ -1,4 +1,4 @@
-Installation
+# Installation
 Bastille is available in the official FreeBSD ports tree at sysutils/bastille. Binary packages available in quarterly and latest repositories.
 
 Current version is 0.10.20231125.
@@ -68,3 +68,7 @@ This method will install the latest files from GitHub directly onto your system.
 
 Note: installing using this method overwrites the version variable to match that of the source revision commit hash.
 
+# Template Repo
+
+- https://github.com/jail-templates
+- https://gitlab.com/bastillebsd-templates

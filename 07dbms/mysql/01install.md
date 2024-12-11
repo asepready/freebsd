@@ -1,7 +1,7 @@
 # Layanan DataBase Management System (DBMS)
 ## Install Paket
 ```sh
-pkg install mariadb1011-server
+pkg install mysql80-server
 
 #/usr/local/etc/mysql/conf.d/server.cnf
 [mysqld]

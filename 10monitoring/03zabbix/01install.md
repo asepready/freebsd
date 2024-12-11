@@ -75,7 +75,7 @@ Server=127.0.0.1
 # line 167 : specify Zabbix server
 ServerActive=127.0.0.1
 # line 178 : change to your hostname
-Hostname=dlp.srv.world
+Hostname=belajarfreebsd.or.id
 root@belajarfreebsd:~# service zabbix_agentd enable
 zabbix_agentd enabled in /etc/rc.conf
 root@belajarfreebsd:~# service zabbix_agentd start
@@ -91,7 +91,7 @@ php_value[upload_max_filesize] = 2M
 php_value[max_input_time] = 300
 php_value[max_input_vars] = 10000
 php_value[always_populate_raw_post_data] = -1
-php_value[date.timezone] = Asia/Tokyo
+php_value[date.timezone] = Asia/Jakarta
 
 root@belajarfreebsd:~# vi /usr/local/etc/apache24/Includes/zabbix.conf
 # create new file
