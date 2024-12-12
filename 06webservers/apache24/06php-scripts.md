@@ -23,8 +23,13 @@ listen = 127.0.0.1:9000
 #listen = /var/run/php-fpm.sock
 
 # line 57, 58 : uncomment
+# sed -i '' 's%;listen.owner = www%listen.owner = www%g' /usr/local/etc/php-fpm.d/www.conf
 listen.owner = www
+# sed -i '' 's%;listen.group = www%listen.group = www%g' /usr/local/etc/php-fpm.d/www.conf
 listen.group = www
+# sed -i '' 's%;listen.mode = 0660%listen.mode = 0660%g' /usr/local/etc/php-fpm.d/www.conf
+listen.mode = 0660
+
 # add setting within the Virtualhost section where you want to configure PHP
 root@www:~ # vi /usr/local/etc/apache24/modules.d/003_php-fpm.conf
 <IfModule proxy_fcgi_module>
