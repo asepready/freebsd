@@ -21,7 +21,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 # create database for phpmyadmin
 root@localhost [(none)]> create database phpmyadmin; 
 Query OK, 1 row affected (0.000 sec)
-root@localhost [(none)]> grant all privileges on phpmyadmin.* to pma@'localhost' identified by 'password'; 
+root@localhost [(none)]> grant all privileges on phpmyadmin.* to pma@'localhost' identified by 'pmapass'; 
 Query OK, 0 rows affected (0.007 sec)
 
 root@localhost [(none)]> exit 
@@ -32,7 +32,7 @@ root@www:/usr/local/www/phpMyAdmin/sql # mysql < create_tables.sql
 root@www:/usr/local/www/phpMyAdmin/sql # cd
 root@www:~ # vi /usr/local/etc/apache24/Includes/phpmyadmin.conf
 # create new
-Alias /phpmyadmin/ "/usr/local/www/phpMyAdmin/"
+Alias /phpmyadmin "/usr/local/www/phpMyAdmin/"
 <Directory "/usr/local/www/phpMyAdmin/">
     DirectoryIndex index.php
     Options None
@@ -75,7 +75,7 @@ $cfg['Servers'][$i]['controlhost'] = '';
 $cfg['Servers'][$i]['controlport'] = '';
 $cfg['Servers'][$i]['controluser'] = 'pma';
 # replace the password you set for pma user above
-$cfg['Servers'][$i]['controlpass'] = 'password';
+$cfg['Servers'][$i]['controlpass'] = 'pmapass';
 
 $cfg['Servers'][$i]['pmadb'] = 'phpmyadmin';
 $cfg['Servers'][$i]['bookmarktable'] = 'pma__bookmark';
