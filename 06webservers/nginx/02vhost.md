@@ -1,4 +1,4 @@
-Nginx : Virtual Hostings2024/02/13
+Nginx : Virtual Hostings
 
 This is the Virtual Hostings configuration for Nginx. For example, configure additional domainame [virtual.host].
 
