@@ -1,0 +1,19 @@
+pkg install -y apache24 php84
+
+# configure apache
+sed -i '' 's%ServerAdmin you@example.com%ServerAdmin admin@example.com:80%g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's%#ServerName www.example.com:80%ServerName www.example.com:80%g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's%Options Indexes FollowSymLinks%Options FollowSymLinks%g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's%AllowOverride None%AllowOverride All%g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's%DirectoryIndex index.html%DirectoryIndex index.html index.php index.cgi%g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's/CustomLog "\/var\/log\/httpd-access.log" common/#CustomLog "\/var\/log\/httpd-access.log" common/g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's/#CustomLog "\/var\/log\/httpd-access.log" combined/CustomLog "\/var\/log\/httpd-access.log" combined/g' /usr/local/etc/apache24/httpd.conf
+sed -i '' '/httpd-default.conf/s/#Include/Include/g' /usr/local/etc/apache24/httpd.conf
+sed -i '' 's%ServerTokens Full%ServerTokens Prod%g' /usr/local/etc/apache24/extra/httpd-default.conf
+
+# Apache configuration PHP
+sed -i '' '/mod_mpm_event.so/s/#LoadModule/LoadModule/' /usr/local/etc/apache24/httpd.conf
+sed -i '' '/mod_mpm_prefork.so/s/LoadModule/#LoadModule/' /usr/local/etc/apache24/httpd.conf
+sed -i '' '/mod_proxy.so/s/#LoadModule/LoadModule/' /usr/local/etc/apache24/httpd.conf
+sed -i '' '/mod_proxy_fcgi.so/s/#LoadModule/LoadModule/' /usr/local/etc/apache24/httpd.conf
+printf '<?php phpinfo(); ?>\n\n' > /usr/local/www/apache24/data/info.php
