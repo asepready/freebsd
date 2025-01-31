@@ -72,3 +72,10 @@ Note: installing using this method overwrites the version variable to match that
 
 - https://github.com/jail-templates
 - https://gitlab.com/bastillebsd-templates
+
+# Assign GPU / graphics card to jail
+
+add file /etc/jail.conf.d/workstation.conf
+```sh
+devfs_ruleset="210";
+```
