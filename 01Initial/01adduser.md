@@ -3,7 +3,7 @@ Initial Settings : Add User Accounts
 If you want to add new user accounts, configure like follows.
 [1]	For example, Add [sysadmin] user.
 ```sh
-root@belajarfreebsd:~# pw useradd sysadmin -m
+root@belajarfreebsd:~# pw add user -n sysadmin -m -s /bin/sh -c "System Administrator"
 # set password
 root@belajarfreebsd:~# passwd sysadmin
 Changing local password for sysadmin
