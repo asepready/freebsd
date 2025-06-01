@@ -5,8 +5,12 @@ bastille bootstrap bionic # Linux Ubuntu 18.04
 
 # create Container quick
 bastille create www 14.1-RELEASE 10.0.0.254 #Create Contaier FreeBSD
-bastille rdr www udp 53 53
+bastille rdr www udp 53 53 # Expose port
 bastille rdr www tcp 80 80
+
+bastille limits TARGET add memoryuse 1G
+bastille limits TARGET add cpu 0,1,2
+
 
 bastille create -L ubuntu-bionic bionic 10.0.0.254 # Create Contaier Linux
 
