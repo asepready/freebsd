@@ -1,9 +1,10 @@
-Initial Settings : Update System2023/12/14
- 	
+Initial Settings : Update System
 After it has been a production System, maybe it's difficult to update System, but at least after installing, Update FreeBSD Server to the latest.
-[1]	To update installed packages to the latest version, do like follows.
+[1] To update installed packages to the latest version, do like follows.
+
 ```sh
 # update repository catalogue
+root@belajarfreebsd:~# service ntpdate onestart
 root@belajarfreebsd:~# pkg update
 Updating FreeBSD repository catalogue...
 FreeBSD repository is up to date.
@@ -151,3 +152,4 @@ Scanning /usr/share/certs/trusted for certificates...
 
 root@belajarfreebsd:~# freebsd-version
 14.1-RELEASE-p2
+```
