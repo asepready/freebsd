@@ -35,7 +35,7 @@ sudo mkdir -p /usr/local/www
 sudo chmod  -R 775 /usr/local/www
 
 # Set folder owner supaya group unit bisa mengakses folder
-sudo chown -R $USER:www /usr/local/www
+sudo chown -R www:www /usr/local/www
 
 cd /usr/local/www
 

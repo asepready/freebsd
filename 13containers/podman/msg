@@ -1,0 +1,107 @@
+Message from containernetworking-plugins-0.6:
+
+--
+Container networking relies on NAT to allow container network packets
+out to the host's network. This requires a PF firewall to perform the
+translation. A simple example is included - to use it:
+
+# cp /usr/local/etc/containers/pf.conf.sample /etc/pf.conf
+
+...
+Edit /etc/pf.conf and set v4egress_if, v6egress_if to your network interface(s)
+...
+
+# sysrc pf_enable=YES
+
+# service pf start
+
+The sample PF configuration includes support for port redirections. These are
+implemented as redirect rules in anchors nested under cni-rdr.
+
+Support for redirecting connections from the container host to services running
+inside a container is included for FreeBSD 13.3 and later. To enable this, first
+load the pf kernel module, by adding pf_load="YES" to /boot/loader.conf and
+enable PF support for these redirections using sysctl:
+
+# kldload pf
+
+# sysctl net.pf.filter_local=1
+
+# service pf restart
+
+Redirect rules will work if the destination address is localhost (e.g. 127.0.0.1
+or ::1) - to enable this, the following line must be included in your
+/etc/pf.conf:
+
+nat-anchor "cni-rdr/\*"
+
+if upgrading from an older version, this needs to be added to /etc/pf.conf.
+
+For example if host port 1234 is redirected to an http service running in a
+container, you could connect to it using:
+
+# fetch -o- http://$(hostname):1234
+
+or
+
+# fetch -o- http://localhost:1234
+
+=====
+Message from containers-common-0.63.1:
+
+--
+Container images and related state is stored in /var/db/containers. It
+is recommended to use ZFS for this:
+
+# zfs create -o mountpoint=/var/db/containers zroot/containers
+
+If your system cannot use ZFS, change storage.conf to use the vfs
+storage driver:
+
+# sed -I .bak -e 's/driver = "zfs"/driver = "vfs"/' /usr/local/etc/containers/storage.conf
+
+=====
+Message from libinotify-20240724_1:
+
+--
+You might want to consider increasing the kern.maxfiles tunable if you plan
+to use this library for applications that need to monitor activity of a lot
+of files.
+=====
+Message from conmon-2.1.13:
+
+--
+To properly support Podman's container restart policy, conmon needs fdescfs(5)
+to be mounted on /dev/fd.
+
+If /dev/fd is not already mounted:
+
+    mount -t fdescfs fdesc /dev/fd
+
+To make it permanent, add the following line to /etc/fstab:
+
+    fdesc	/dev/fd		fdescfs		rw	0	0
+
+=====
+Message from podman-5.5.2:
+
+--
+The FreeBSD port of the Podman container engine is experimental and should be
+used for evaluation and testing purposes only.
+
+$ sudo podman run --rm quay.io/dougrabson/hello
+
+Podman can restart containers after a host is rebooted. To enable this, use:
+
+$ sudo sysrc podman_enable=YES
+
+and start the container with a restart policy:
+
+$ sudo podman run -d --restart=always myimage
+
+It is possible to run many Linux container images using FreeBSD's Linux emulation:
+
+$ sudo sysrc linux_enable=YES
+$ sudo service linux start
+$ sudo podman run --rm --os=linux alpine cat /etc/os-release | head -1
+NAME="Alpine Linux"
